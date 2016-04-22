@@ -1,0 +1,316 @@
+@media screen and (min-width: 800px) { /*当屏幕尺寸大于800px时，应用下面的CSS样式*/
+    html,body{height:100%;overflow-y: auto}
+    .wrap{
+        position: relative;
+        display:-webkit-box;
+        display:-webkit-flex;
+        display:-ms-flexbox;
+        display:flex;
+
+        -webkit-box-orient:vertical;
+        -webkit-flex-direction:column;
+        -ms-flex-direction:column;
+        flex-direction:column;
+        width:420px;height:650px;
+        margin: 50px auto;
+        border:1px solid #ddd;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 800px) { /*当屏幕尺寸小于800px时，应用下面的CSS样式*/
+    html,body{height:100%;overflow: hidden}
+    .wrap{
+        position: relative;
+        display:-webkit-box;
+        display:-webkit-flex;
+        display:-ms-flexbox;
+        display:flex;
+        -webkit-box-orient:vertical;
+        -webkit-flex-direction:column;
+        -ms-flex-direction:column;
+        flex-direction:column;
+        width:100%;height:100%;
+    }
+}
+.header,.footer{height:30px;background-color:#D8D8D8;text-align:center;}
+.main{
+    -webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;
+    width:100%;
+    overflow:auto;/* winphone8和android4+ */
+    -webkit-overflow-scrolling: touch; /* ios5+ */
+    background: #E7E7E7;
+
+}
+.footer{
+
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+
+    -webkit-flex-direction:row;
+    -ms-flex-direction:row;
+    flex-direction:row;
+    background: #F4F4F6;
+
+    padding: 7px 0;
+
+}
+.chat-content{
+    -webkit-box-flex:7;-webkit-flex:7;-ms-flex:7;flex:7;
+    text-align: center;
+
+}
+
+.input-box{
+    width:90%;
+    height:30px;
+    border:1px solid #BEBFC3;
+    
+    margin:0 auto;
+    background: #fff;
+    position: relative;
+}
+.input-box input{
+    padding:0 5px;
+    width: 90%;
+    height:25px;
+    position: absolute;
+    top:3px;
+    left:0;
+    border:none;
+    font-size:14px;
+    font-weight:bold;
+    outline: none;
+}
+.chat-tool{
+    -webkit-box-flex:3;-webkit-flex:3;-ms-flex:3;flex:3;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+
+    -webkit-flex-direction:row;
+    -ms-flex-direction:row;
+    flex-direction:row;
+}
+.send-btn{
+    height:32px;
+    -webkit-box-flex:2;-webkit-flex:2;-ms-flex:2;flex:2;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    appearance: none;
+    border: none;
+
+    line-height: 32px;
+    background: #29a7e1;
+    color:#fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.send-btn:active, .send-btn.active, .send-btn.is-active {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    background-color: #1B9AF7;
+    border-color: #cfcfcf;
+    color: #d4d4d4;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.more-toll{
+    -webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;
+    height:32px;
+    padding:0 5px;
+
+}
+.more-toll i{
+    background: url("../images/iconfont-add.png") no-repeat center ;
+    background-size:100%  auto;
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height:30px;
+}
+.tool-box{
+    width: 100%;
+    height:140px;
+    background: #ffffff;
+    /*position: absolute;*/
+    /*z-index:9;*/
+    /*bottom:0;*/
+    /*left:0;*/
+    display: none;
+    /*transition: transform .3s;*/
+    /*-moz-transition: -moz-transform .3s;	!* Firefox 4 *!*/
+    /*-webkit-transition: -webkit-transform .3s;	!* Safari 和 Chrome *!*/
+    /*-o-transition: -o-transform .3s;	!* Opera *!*/
+
+    /*transform: translate(0,140px);*/
+    /*-webkit-transform: translate(0,140px);*/
+    /*-o-transform: translate(0,140px);*/
+    /*-moz-transform: translate(0,140px);*/
+}
+.show-tool-box{
+    display: block;
+    /*transform: translate(0,0);*/
+    /*-ms-transform: translate(0,0);*/
+    /*-webkit-transform: translate(0,0);*/
+    /*-o-transform: translate(0,0);*/
+    /*-moz-transform: translate(0,0);*/
+}
+.tool-box > .tool-box-row{
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
+    display:flex;
+
+    -webkit-flex-direction:row;
+    -ms-flex-direction:row;
+    flex-direction:row;
+}
+.tool-box > .tool-box-row > .tool-item{
+    -webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;
+    height:50px;
+    padding: 3px 3px;
+    display: block;
+    margin: 7px 5px;
+}
+.tool-box > .tool-box-row > .tool-item:active,.tool-box > .tool-box-row > .tool-item.active{
+    background: #e1e2e3;
+    border-radius: 4px;
+}
+.tool-box > .tool-box-row > .tool-item > span{
+    display: block;
+    height:30px;
+}
+.tool-box > .tool-box-row > .tool-item > label{
+    display: block;
+    font-size: 12px;
+    padding-top: 4px;
+    text-align: center;
+}
+.tool-box > .tool-box-row:nth-child(1) > .tool-item:nth-child(1) span{
+    background: url("../images/iconfont-liaotian.png") no-repeat center;
+    background-size:auto 100% ;
+}
+.tool-box > .tool-box-row:nth-child(1) > .tool-item:nth-child(2) span{
+    background: url("../images/iconfont-shiyongyingyong.png") no-repeat center;
+    background-size:auto 100% ;
+}
+.tool-box > .tool-box-row:nth-child(1) > .tool-item:nth-child(3) span{
+    background: url("../images/iconfont-tianqi.png") no-repeat center;
+    background-size:auto 100% ;
+}
+.tool-box > .tool-box-row:nth-child(1) > .tool-item:nth-child(4) span{
+    background: url("../images/iconfont-11huoche.png") no-repeat center;
+    background-size:auto 100% ;
+}
+.tool-box > .tool-box-row:nth-child(2) > .tool-item:nth-child(1) span{
+    background: url("../images/iconfont-feiji.png") no-repeat center;
+    background-size:auto 100% ;
+}
+.tool-box > .tool-box-row:nth-child(2) > .tool-item:nth-child(2) span{
+    background: url("../images/iconfont-bianmingongjumeishicaipu.png") no-repeat center;
+    background-size:auto 100% ;
+}
+.tool-box > .tool-box-row:nth-child(2) > .tool-item:nth-child(3) span{
+    background: url("../images/iconfont-lvyou.png") no-repeat center;
+    background-size:auto 100% ;
+}
+
+/**聊天区域*/
+.robotx-msg-item,.user-msg-item{
+    width: 95%;
+    margin:20px auto;
+}
+.robotx-head{
+    width:40px;
+    height:40px;
+    background: url("../images/robotx.jpg");
+    background-size: 100% 100%;
+    float:left;
+}
+.user-head{
+    width:40px;
+    height:40px;
+    background: url("../images/user.jpg");
+    background-size: 100% 100%;
+    float:right;
+}
+.robotx-msg:after{
+    width: 0;
+    height: 0;
+    content: " ";
+    position: absolute;
+    left:-10px;
+    top:15px;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #fff;
+    border-bottom: 5px solid transparent;
+}
+.robotx-msg{
+    float:left;
+    position: relative;
+    max-width: 200px;
+    margin-left:15px ;
+    background: #fff;
+    padding:10px;
+    border-radius: 5px;
+    border:1px solid #D3D3D3;
+    color:#232323;
+    font-size:14px;
+    word-break: break-all;
+}
+.user-msg:after{
+    width: 0;
+    height: 0;
+    content: " ";
+    position: absolute;
+    right:-10px;
+    top:15px;
+    border-top: 5px solid transparent;
+    border-left: 10px solid #92E649;
+    border-bottom: 5px solid transparent;
+
+}
+.user-msg{
+    float:right;
+    position: relative;
+    max-width: 200px;
+    margin-right:15px ;
+    background: #92E649;
+    padding:10px;
+    border-radius: 5px;
+    border:1px solid #72D52C;
+    color: #000;
+    font-size:14px;
+}
+
+.multiple-list h2{
+    font-size:14px;
+}
+.multiple-list p{
+    font-size: 12px;
+    color: #29a7e1;
+    padding:3px 0 0 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.multiple-list p:hover,.multiple-list p:active{
+    color:#1B9AF7;
+}
+
+
+

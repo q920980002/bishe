@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html >
+<head> 
+    <title>小云机器人</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <link href="/web/css/common.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/web/js/common.js"></script>
+</head>
+    <body>
+
+    <div class="wrap">
+        <!-- 内容区域 -->
+        <div id="chatBox" class="main">
+           <div class="robotx-msg-item">
+               <div class="robotx-head"></div>
+               <div class="robotx-msg">
+                   我是小云, 开始和我聊天吧!O(∩_∩)O哈哈~
+               </div>
+               <div class="clear"></div>
+           </div>
+
+        </div> <!-- end 内容区域 -->
+        <!-- 输入 功能 区域 -->
+        <div class="footer">
+            <div class="chat-content">
+                <div class="input-box">
+                    <input type="text" id="msg" />
+                </div>
+            </div>
+            <div class="chat-tool">
+                <span id="sendBtn" class="send-btn">发送</span>
+                <span id="openTollBtn" class="more-toll"><i></i></span>
+            </div>
+
+        </div><!-- end输入 功能 区域 -->
+        <div id="toolBox" class="tool-box">
+            <div class="tool-box-row">
+                <div data-type="chat" class="tool-item">
+                    <span></span>
+                    <label>随便聊聊</label>
+                </div>
+                <div data-type="trial" class="tool-item">
+                    <span></span>
+                    <label>试用产品</label>
+                </div>
+                <div data-type="weather" class="tool-item">
+                    <span></span>
+                    <label>天气</label>
+                </div>
+                <div data-type="railway" class="tool-item">
+                    <span></span>
+                    <label>火车票</label>
+                </div>
+            </div>
+            <div class="tool-box-row">
+                <div data-type="airplane" class="tool-item">
+                    <span></span>
+                    <label>飞机票</label>
+                </div>
+                <div data-type="menu" class="tool-item">
+                    <span></span>
+                    <label>菜谱</label>
+                </div>
+                <div data-type="travel" class="tool-item">
+                    <span></span>
+                    <label>游记</label>
+                </div>
+                <div class="tool-item">
+                    <span></span>
+                    <label></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html >
+<head> 
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+        var data1 = [
+            {
+                value: 60,
+                color:"#F38630"
+            },
+            {
+                value : 10,
+                color : "#E0E4CC"
+            },
+            {
+                value : 10,
+                color : "#69D2E7"
+            },
+            {
+                value: 20,
+                color:"#23e630"
+            }
+        ]
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+        $(function(){
+
+            var ctx1 = document.getElementById("myChart1").getContext("2d");
+            var myNewChart = new Chart(ctx1).Pie(data1,null);
+
+            $.ajax({
+                type: "post",
+                url: window.location.origin+"/?&m=get_weight",
+                data: {phone:phone},
+                dataType: "json",
+                success: function (data) {
+                    if(data.code == 1){
+                        data = data.data;
+                        var times = new Array();
+                        var datas = new Array();
+                        for(var i = 0;i<data.length;i++){
+                            times.push(formatDate(data[i]['create_time']*1000));
+                            datas.push(data[i]['weight'])
+                        }
+
+                        var data2 = {
+                            labels : times,
+                            datasets : [
+                                {
+                                    fillColor : "rgba(151,187,205,0.5)",
+                                    strokeColor : "rgba(151,187,205,1)",
+                                    pointColor : "rgba(151,187,205,1)",
+                                    pointStrokeColor : "#fff",
+                                    data : datas
+                                }
+                            ]
+                        }
+                        if(times.length < 1){
+                            $("#box1Weight").text("您还没有体重数据,请先上传数据吧!");
+                        }else{
+                            //Get the context of the canvas element we want to select
+                            var ctx2 = document.getElementById("myChart2").getContext("2d");
+                            var myNewChart = new Chart(ctx2).Line(data2,null);
+                        }
+
+                    }
+
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+        });
+    </script>
+    <style>
+        body{
+            background: #eee;
+        }
+        .box1{
+            background: #fff;
+            padding: 20px;
+        }
+        .box1 h1{
+            font-size: 16px;
+            font-weight: normal;
+            padding: 0 0 10px 0;
+        }
+        .box-01{
+            width: 50%;
+        }
+        .box-02{
+            width: 50%;
+            float: right;
+        }
+        .left{
+            float: left;
+        }
+
+        .box-02 ul li{
+            line-height: 30px;
+            margin-left: 20px;
+        }
+        .box-02 ul li span{
+            display: inline-block;
+            width: 10px;
+            height:10px;
+            margin-right: 10px;;
+        }
+
+    </style>
+</head>
+    <body>
+        <div class="box1">
+            <h1 id="a1">食品摄入比例</h1>
+            <div class="box-01 left">
+                <canvas id="myChart1" width="130px" height="auto"  ></canvas>
+            </div>
+
+            <div class="box-02 left">
+                <ul>
+                    <li><span style="background: #F38630"></span><label>面食 60.2%</label></li>
+                    <li><span style="background: #23e630"></span><label>蔬菜 20.1%</label></li>
+                    <li><span style="background: #E0E4CC"></span><label>肉食 10.3%</label></li>
+                    <li><span style="background: #69D2E7"></span><label>水果 9.7%</label></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear" style="height: 20px"></div>
+        <div id="box1Weight" class="box1">
+            <h1>我的体重趋势表</h1>
+            <canvas id="myChart2"  ></canvas>
+        </div>
+        <div class="clear" style="height: 20px"></div>
+
+
+    </body>
+</html>
+

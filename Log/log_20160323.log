@@ -1,0 +1,149 @@
+[2016-03-23 10:57:25] [error] 企业号不能为空
+[2016-03-23 15:06:41] [error] 配置文件不存在，无法加载
+[2016-03-23 15:07:40] [error] 配置文件不存在，无法加载
+[2016-03-23 17:37:14] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%日本%' )
+[2016-03-23 17:37:15] [info] select * from `:table_name` where `type` = '201' and `event` = '介绍'  and ( `object` like '%我%' or  `object` like '%日本%' )
+[2016-03-23 17:38:30] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%日本%' )
+[2016-03-23 17:38:32] [info] select * from `:table_name` where `type` = '504' and `event` = '-'  and ( `object` like '%日本%' or  `object` like '%日本%' )
+[2016-03-23 17:38:41] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 17:38:43] [info] select * from `:table_name` where `type` = '504' and `event` = '-'  and ( `object` like '%日本%' or  `object` like '%北京%' )
+[2016-03-23 17:38:48] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 17:38:56] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 17:38:58] [info] select * from `:table_name` where `type` = '504' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 17:39:05] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%上海%' )
+[2016-03-23 17:39:06] [info] select * from `:table_name` where `type` = '504' and `event` = '-'  and ( `object` like '%上海%' )
+[2016-03-23 17:39:10] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%上海%' )
+[2016-03-23 17:42:45] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 17:42:49] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%上海%' )
+[2016-03-23 17:42:52] [info] select * from `:table_name` where `type` = '201' and `event` = '去'  and ( `object` like '%上海%' )
+[2016-03-23 18:12:06] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%工人%' )
+[2016-03-23 18:12:09] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%工人%' )
+[2016-03-23 18:14:38] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%毛泽东%' )
+[2016-03-23 18:14:40] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%毛泽东%' )
+[2016-03-23 18:14:42] [info] select * from `:table_name` where `type` = '507' and `event` = '-'  and ( `object` like '%毛泽东%' or  `object` like '%时候%' or  `object` like '%国人%' )
+[2016-03-23 18:15:07] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:15:09] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%周星驰%' or  `object` like '%国家%' or  `object` like '%人%' )
+[2016-03-23 18:15:13] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:22:59] [info] select * from `:table_name` where `type` = '202' and `event` = '-'  and ( `object` like '%你%' )
+[2016-03-23 18:23:05] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:23:10] [info] select * from `:table_name` where `type` = '509' and `event` = '-'  and ( `object` like '%周星驰%' or  `object` like '%国家%' or  `object` like '%人%' )
+[2016-03-23 18:23:27] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%胡锦涛%' )
+[2016-03-23 18:23:28] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%胡锦涛%' or  `object` like '%国家%' or  `object` like '%人%' )
+[2016-03-23 18:23:31] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%胡锦涛%' )
+[2016-03-23 18:25:04] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%周润发%' )
+[2016-03-23 18:25:08] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%周润发%' )
+[2016-03-23 18:25:15] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:25:17] [info] select * from `:table_name` where `type` = '201' and `event` = '介绍'  and ( `object` like '%我%' or  `object` like '%周星驰%' )
+[2016-03-23 18:25:30] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:25:31] [info] select * from `:table_name` where `type` = '201' and `event` = '介绍'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:26:45] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%联合国%' )
+[2016-03-23 18:26:46] [info] select * from `:table_name` where `type` = '507' and `event` = '-'  and ( `object` like '%联合国%' )
+[2016-03-23 18:26:48] [info] select * from `:table_name` where `type` = '201' and `event` = '介绍'  and ( `object` like '%联合国%' )
+[2016-03-23 18:27:16] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 18:27:19] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%北京%' )
+[2016-03-23 18:28:25] [info] select * from `:table_name` where `type` = '201' and `event` = '吃饭' 
+[2016-03-23 18:30:35] [info] select * from `:table_name` where `type` = '201' and `event` = '犯' 
+[2016-03-23 18:30:36] [info] select * from `:table_name` where `type` = '201' and `event` = '吃饭' 
+[2016-03-23 18:30:38] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%哈哈%' )
+[2016-03-23 18:30:43] [info] select * from `:table_name` where `type` = '201' and `event` = '犯' 
+[2016-03-23 18:35:15] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:35:40] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:36:09] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:36:37] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:37:54] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:38:00] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:38:02] [info] select * from `:table_name` where `type` = '201' and `event` = '打架'  and ( `object` like '%我%' )
+[2016-03-23 18:38:04] [info] select * from `:table_name` where `type` = '504' and `event` = '打架' 
+[2016-03-23 18:38:52] [info] select * from `:table_name` where `type` = '504' and `event` = '打架' 
+[2016-03-23 18:40:32] [info] select * from `:table_name` where `type` = '504' and `event` = '打架' 
+[2016-03-23 18:40:41] [info] select * from `:table_name` where `type` = '504' and `event` = '打架' 
+[2016-03-23 18:40:45] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:40:47] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:40:54] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:41:14] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:41:20] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:41:22] [info] select * from `:table_name` where `type` = '504' and `event` = '打架' 
+[2016-03-23 18:41:27] [info] select * from `:table_name` where `type` = '201' and `event` = '走路' 
+[2016-03-23 18:41:28] [info] select * from `:table_name` where `type` = '201' and `event` = '走路'  and ( `object` like '%我%' )
+[2016-03-23 18:41:31] [info] select * from `:table_name` where `type` = '504' and `event` = '走路' 
+[2016-03-23 18:41:45] [info] select * from `:table_name` where `type` = '201' and `event` = '走' 
+[2016-03-23 18:42:18] [info] select * from `:table_name` where `type` = '201' and `event` = '杀人' 
+[2016-03-23 18:42:27] [info] select * from `:table_name` where `type` = '201' and `event` = '杀人'  and ( `object` like '%我%' )
+[2016-03-23 18:42:49] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%哈哈%' )
+[2016-03-23 18:42:51] [info] select * from `:table_name` where `type` = '202' and `event` = '-' 
+[2016-03-23 18:42:55] [info] select * from `:table_name` where `type` = '201' and `event` = '喊'  and ( `object` like '%叔叔%' )
+[2016-03-23 18:42:57] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%叔叔%' )
+[2016-03-23 18:42:59] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%叔叔%' )
+[2016-03-23 18:43:01] [info] select * from `:table_name` where `type` = '510' and `event` = '-'  and ( `object` like '%叔叔%' )
+[2016-03-23 18:43:06] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%哈%' or  `object` like '%啊哈哈%' )
+[2016-03-23 18:43:08] [info] select * from `:table_name` where `type` = '201' and `event` = '死'  and ( `object` like '%我%' )
+[2016-03-23 18:43:18] [info] select * from `:table_name` where `type` = '202' and `event` = '-'  and ( `object` like '%现在%' or  `object` like '%度%' )
+[2016-03-23 18:43:27] [info] select * from `:table_name` where `type` = '510' and `event` = '-'  and ( `object` like '%你%' or  `object` like '%公司%' or  `object` like '%竞争力%' )
+[2016-03-23 18:43:47] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%夏天%' )
+[2016-03-23 18:44:32] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:44:33] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:44:53] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%李%' )
+[2016-03-23 18:44:54] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%李%' )
+[2016-03-23 18:45:44] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%红烧%' or  `object` like '%鱼%' )
+[2016-03-23 18:45:49] [info] select * from `:table_name` where `type` = '201' and `event` = '吃'  and ( `object` like '%我%' or  `object` like '%红烧%' or  `object` like '%鱼%' )
+[2016-03-23 18:45:58] [info] select * from `:table_name` where `type` = '202' and `event` = '-'  and ( `object` like '%地球%' )
+[2016-03-23 18:48:20] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:48:42] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:48:46] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:52:12] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:52:17] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:52:52] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:53:45] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 18:55:51] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:55:53] [info] select * from `:table_name` where `type` = '201' and `event` = '介绍'  and ( `object` like '%周星驰%' )
+[2016-03-23 18:56:26] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%哈哈%' )
+[2016-03-23 18:56:36] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%天津%' )
+[2016-03-23 18:56:40] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%毛泽东%' )
+[2016-03-23 18:56:43] [info] select * from `:table_name` where `type` = '201' and `event` = '带' 
+[2016-03-23 18:57:12] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%杯子%' )
+[2016-03-23 18:57:22] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%马克思%' )
+[2016-03-23 18:57:56] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%联合国%' )
+[2016-03-23 18:57:58] [info] select * from `:table_name` where `type` = '201' and `event` = '介绍'  and ( `object` like '%联合国%' )
+[2016-03-23 18:58:32] [info] select * from `:table_name` where `type` = '201' and `event` = '吃' 
+[2016-03-23 18:59:24] [info] select * from `:table_name` where `type` = '201' and `event` = '吃' 
+[2016-03-23 18:59:37] [info] select * from `:table_name` where `type` = '201' and `event` = '吃' 
+[2016-03-23 18:59:46] [info] select * from `:table_name` where `type` = '201' and `event` = '打架' 
+[2016-03-23 18:59:50] [info] select * from `:table_name` where `type` = '201' and `event` = '打' 
+[2016-03-23 18:59:57] [info] select * from `:table_name` where `type` = '201' and `event` = '去'  and ( `object` like '%阿基%' or  `object` like '%多家%' )
+[2016-03-23 19:00:20] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%企鹅%' )
+[2016-03-23 19:00:22] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%企鹅%' )
+[2016-03-23 20:45:09] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%呵呵%' )
+[2016-03-23 20:46:06] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%你%' or  `object` like '%我%' or  `object` like '%小宝%' or  `object` like '%贝%' )
+[2016-03-23 20:47:00] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%世界%' or  `object` like '%上%' or  `object` like '%人%' )
+[2016-03-23 20:47:36] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:48:31] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:48:58] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:01] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:57] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:58] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:58] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:59] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:59] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:49:59] [info] select * from `:table_name` where `type` = '202' and `event` = '打开'  and ( `object` like '%我%' or  `object` like '%灯%' )
+[2016-03-23 20:50:06] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%你%' )
+[2016-03-23 20:50:08] [info] select * from `:table_name` where `type` = '502' and `event` = '-'  and ( `object` like '%你%' )
+[2016-03-23 20:50:17] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%北京%' or  `object` like '%紫平方%' or  `object` like '%信息%' or  `object` like '%技术%' or  `object` like '%有限公司%' )
+[2016-03-23 20:50:42] [info] select * from `:table_name` where `type` = '201' and `event` = '点击' 
+[2016-03-23 20:51:08] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%好帅%' )
+[2016-03-23 20:51:13] [info] select * from `:table_name` where `type` = '501' and `event` = '-'  and ( `object` like '%好帅%' )
+[2016-03-23 20:51:53] [info] select * from `:table_name` where `type` = '202' and `event` = '-'  and ( `object` like '%你%' or  `object` like '%日子%' or  `object` like '%我%' )
+[2016-03-23 20:51:59] [info] select * from `:table_name` where `type` = '201' and `event` = '加'  and ( `object` like '%虎娃%' or  `object` like '%耳机%' or  `object` like '%我%' or  `object` like '%王%' or  `object` like '%企鹅%' or  `object` like '%我%' or  `object` like '%企鹅%' )
+[2016-03-23 20:52:41] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%钓鱼岛%' or  `object` like '%中国%' )
+[2016-03-23 20:52:43] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%钓鱼岛%' or  `object` like '%中国%' )
+[2016-03-23 20:53:35] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%钓鱼岛%' or  `object` like '%中国%' )
+[2016-03-23 20:54:18] [info] select * from `:table_name` where `type` = '205' and `event` = '-'  and ( `object` like '%钓鱼岛%' or  `object` like '%中国%' )
+[2016-03-23 21:04:22] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%你%' or  `object` like '%真好%' )
+[2016-03-23 21:20:54] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%你%' or  `object` like '%真好%' )
+[2016-03-23 21:24:25] [info] select * from `:table_name` where `type` = '202' and `event` = '-'  and ( `object` like '%你%' )
+[2016-03-23 22:45:44] [info] select * from `:table_name` where `type` = '0' and `event` = '-' 
+[2016-03-23 22:45:49] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%我%' or  `object` like '%草%' )
+[2016-03-23 22:48:31] [info] select * from `:table_name` where `type` = '201' and `event` = '喊'  and ( `object` like '%叔叔%' )
+[2016-03-23 22:48:33] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%呵呵%' )
+[2016-03-23 22:48:34] [info] select * from `:table_name` where `type` = '0' and `event` = '-'  and ( `object` like '%你%' or  `object` like '%大爷%' )
+[2016-03-23 22:48:40] [info] select * from `:table_name` where `type` = '201' and `event` = '骂'  and ( `object` like '%你%' )
+[2016-03-23 22:48:41] [info] select * from `:table_name` where `type` = '0' and `event` = '-' 

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>小云机器人</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/web/css/public.css" rel="stylesheet">
+
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <style>
+        body{
+            background: #f5f6f7;;
+        }
+        table td{
+            padding:5px 10px;
+        }
+        table td:nth-child(2n-1){
+
+        }
+        input[type="text"]{
+            width: 150px;
+            height:20px;
+            padding:5px 8px;
+            outline: none;
+            border-radius: 2px;
+            border:1px solid #ddd;
+        }
+        .answer-text{
+            width: 150px;
+            height:120px;
+            padding:5px 8px;
+            outline: none;
+            border-radius: 2px;
+            border:1px solid #ddd;
+        }
+        input[type="text"]:focus{
+            border:1px solid #29ae71;
+        }
+        input[type="submit"]{
+            width: 150px;
+            height:30px;
+            background: #29a7e1;
+            color:#fff;
+            border:none;
+            outline: none;
+            cursor: pointer;
+            padding:5px 8px;
+        }
+        .main-add{
+            padding:20px;
+            margin: 30px auto;
+            display: block;
+            width: 380px;
+            border:1px solid #ddd;
+            background: #fff;
+            border-radius: 4px;
+        }
+        .main-add h1{
+            border-bottom: 1px dashed #ddd;
+            margin-bottom:20px;
+            padding:10px 0;
+        }
+        #splitDiv{
+            width: 80%;
+            min-height: 300px;
+            background: rgba(0,0,0,.8);
+            position: fixed;
+            bottom:0;
+            left:10%;
+            z-index: 999;
+            color:#fff;
+            padding:20px;
+            display: none;
+        }
+        .splitTable{
+            width: auto;
+            min-height: 100px;
+        }
+        .splitTable td{
+            text-align: center;
+            padding:6px 5px;
+
+        }
+        .splitTable tr:first-child{
+            color:#29ee31;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .red{
+            color:#ff5511;
+        }
+        .objectword{
+            padding:3px 6px;
+            border:1px dashed #ff5511;
+            margin:3px 7px 3px 0;
+            color:#ff5511;
+        }
+        .close{
+            font-size:30px;
+            color:#fff;
+            position: absolute;
+            right: 15px;
+            top:5px;
+            cursor: pointer;
+        }
+        .title1{
+            padding:9px;
+            font-weight: normal;
+        }
+        .like-div{
+            padding-left: 9px;
+            max-height:130px;
+            overflow-y: auto;
+
+        }
+        .like-div p{
+            padding:5px 0;
+            color:rgba(255,255,255,.7)
+        }
+        .error{
+            border:1px solid #ff5511!important;
+            color:#ff5511;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+    <script>
+        $(function(){
+            var innerHtml = "";
+
+            for(var i = 200;i<800;i++){
+                var type_name = getTypeName(i);
+                if(isNaN(type_name)){
+                    innerHtml+="<option value='"+i+"'>"+type_name+"</option>";
+                }
+            }
+            $("#word_type").html(innerHtml);
+        })
+        function getTypeName(type){
+            if(!type){
+                return "暂无";
+            }
+            var typeName = "未知";
+            if(type == 501){
+                typeName = "什么(疑问句)";
+            }else if(type == 502){
+                typeName = "谁(疑问句)";
+            }else if(type == 503){
+                typeName = "为什么(疑问句)";
+            }else if(type == 504){
+                typeName = "怎么(疑问句)";
+            }else if(type == 505){
+                typeName = "干什么(疑问句)";
+            }else if(type == 506){
+                typeName = "吗(疑问句)";
+            }else if(type == 507){
+                typeName = "那里(疑问句)";
+            }else if(type == 508){
+                typeName = "什么时候(疑问句)";
+            }else if(type == 509){
+                typeName = "那个(疑问句)";
+            }else if(type == 510){
+                typeName = "哪些(疑问句)";
+            }else if(type == 511){
+                typeName = "多少(疑问句)";
+            }else if(type == 201){
+                typeName = "动词";
+            }else if(type == 202){
+                typeName = "形容词";
+            }else if(type == 203){
+                typeName = "能愿动词";
+            }else if(type == 204){
+                typeName = "会";
+            }else if(type == 205){
+                typeName = "是";
+            }else if(type == 301){
+                typeName = "名词";
+            }else if(type == 302){
+                typeName = "代词";
+            }else if(type == 303){
+                typeName = "时间名词";
+            }else if(type == 304){
+                typeName = "地名";
+            }else if(type == 305){
+                typeName = "方位名词";
+            }else if(type == 306){
+                typeName = "所处名词";
+            }else if(type == 307){
+                typeName = "人名";
+            }else if(type == 308){
+                typeName = "机构名";
+            }else if(type == 401){
+                typeName = "数字";
+            }else if(type == 402){
+                typeName = "量词";
+            }else if(type == 601){
+                typeName = "副词";
+            }else if(type == 602){
+                typeName = "介词";
+            }else if(type == 603){
+                typeName = "连词";
+            }else if(type == 604){
+                typeName = "助词";
+            }else if(type == 605){
+                typeName = "叹词";
+            }else if(type == 606){
+                typeName = "拟声词";
+            }else if(type == 700){
+                typeName = "否定词";
+            }else{
+                typeName = type;
+            }
+            return typeName;
+        }
+        function splitWord(value){
+
+            $.ajax({
+                type: "post",
+                url: window.location.origin+"/?c=tool&m=splitWord",
+                data: {value:value,com_id:$("#comId").val()},
+                dataType: "json",
+                success: function (data) {
+
+                    if(data){
+                        var word_element = data["word_element"];
+                        var event_element = data["event_element"];
+                        var query_sql = data["query_sql"];
+                        var like_res = data["like_res"];
+
+
+                        var innerHtml='<span class="close" onclick="$(this).parent().fadeOut()">×</span><table class="splitTable">';
+                        innerHtml+="<tr>";
+                        for(var i=0;i<word_element.length;i++){
+                            innerHtml+="<td>"+word_element[i]['Word']+"</td>";
+                        }
+                        innerHtml+="</tr>";
+                        innerHtml+="<tr>";
+                        for(var i=0;i<word_element.length;i++){
+                            innerHtml+="<td>"+getTypeName(word_element[i]['Type'])+"</td>";
+                        }
+                        innerHtml+="</tr>";
+                        for(var i=0;i<word_element.length;i++){
+                            innerHtml+="<td>"+word_element[i]['Prototype']+"</td>";
+                        }
+
+                        innerHtml+="</tr>";
+                        innerHtml+='</table>';
+                        innerHtml+='<div style="height:1px;background: rgba(255,255,255,.3);margin:15px 0;"></div>';
+                        innerHtml+="<table>";
+
+                        innerHtml+="<tr><td>是否为疑问句:</td><td>"+(event_element['isInterrogative']==1?'是':'否')+"</td><td>是否为否定句:</td><td>"+(event_element['isNegative']?'是':'否')+"</td><td>是否为肯定句:</td><td>"+(event_element['isEventJudgement']?'是':'否')+"</td></tr>";
+
+                        innerHtml+="<tr><td>关键动词:</td><td class='red'>"+(event_element['Event']?event_element['Event']:'暂无')+"</td><td>句子类型:</td><td class='red'>"+getTypeName(event_element['Type'])+"-"+(event_element['Type']?event_element['Type']:'暂无')+"</td></tr>";
+
+                        innerHtml+="<tr><td VALIGN='TOP'>含有名词:</td><td colspan='5'>";
+                        for(var i=0;i<event_element['Object'].length;i++){
+                            innerHtml+="<span class='objectword'>"+event_element['Object'][i]+"</span>";
+                        }
+                        for(var i=0;i<event_element['Object2'].length;i++){
+                            innerHtml+="<span class='objectword'>"+event_element['Object'][i]+"</span>";
+                        }
+                        innerHtml+="</td></tr>";
+                        innerHtml+="</table>";
+                        innerHtml+="<table>";
+                        innerHtml+="<tr><td>查询sql:</td><td colspan='5'>"+query_sql+"</td></tr>";
+                        innerHtml+="</table>";
+
+                        innerHtml+='<div style="height:1px;background: rgba(255,255,255,.3);margin:15px 0;"></div>';
+
+                        innerHtml+="<h5 class='title1'>该问题可能会查询出来的答案</h5>";
+                        innerHtml+="<div class='like-div'>";
+                        for(var i=0;i<like_res.length;i++){
+                            innerHtml+="<p>"+like_res[i]['Orignal']+" <span style='padding:0 30px'>-</span> "+like_res[i]['Return']+"</p>";
+                        }
+                        innerHtml+="</div>";
+
+                        $("#splitDiv").html(innerHtml);
+                    }
+                },
+                error: function () {
+
+                }
+            });
+
+        }
+        function showDiv(){
+            $("#splitDiv").fadeIn();
+        }
+        function hideDiv(){
+            //$("#splitDiv").fadeOut();
+        }
+
+        function checkHas(obj){
+            var value = obj.value;
+            $.ajax({
+                type: "post",
+                url: window.location.origin + "/?c=tool&m=exist_word",
+                data: {value: value, com_id: $("#word_comId").val()},
+                dataType: "json",
+                success: function (data) {
+                    if(data.code == 1){
+                        $(obj).addClass("error");
+                        $(obj).parent().find("span").show();
+                        console.log(data.data);
+                    }else{
+                        $(obj).removeClass("error");
+                        $(obj).parent().find("span").hide();
+                    }
+                }
+            });
+        }
+
+        function selectLength(value){
+            $("#WordLength").val(value.length);
+        }
+
+        $(function(){
+            //获取上下文分类
+            $.ajax({
+                type: "post",
+                url: window.location.origin + "/?m=getContextType",
+                data: {comId: $("#context_word_comId").val()},
+                dataType: "json",
+                success: function (data) {
+
+                    if(data.info){
+                        var innerHtml ="";
+                        for(var i=0;i<data.info.length;i++){
+                            innerHtml+="<option value='"+data.info[i]['type']+"'>"+data.info[i]['name']+"</option>";
+                        }
+                        $("#context_category_type").html(innerHtml);
+                    }
+
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<div id="splitDiv">
+
+</div>
+<div class="wrap">
+
+    <div class="main-add">
+        <h1>添加单个问题</h1>
+        <form action="/?m=Add_dialog" method="post">
+        <table>
+            <tr>
+                <td>企业id:</td>
+                <td><input value="1000000248" type="text" id="comId" name="comId"/></td>
+            </tr>
+            <tr>
+                <td >问题:</td>
+                <td><input type="text" onfocus="showDiv()" onblur="hideDiv()" onkeyup="splitWord(this.value)" name="ask"/></td>
+            </tr>
+            <tr>
+                <td valign="top">答案:</td>
+                <td><textarea class="answer-text" name="answer"></textarea></td>
+            </tr>
+            <tr>
+                <td>分类id:</td>
+                <td><input value="1" type="text" name="categoryId"/></td>
+            </tr>
+            <tr>
+                <td>开始时间的时间戳:</td>
+                <td><input value="1458730052" type="text" name="startTime"/></td>
+            </tr>
+            <tr>
+                <td>结束时间的时间戳:</td>
+                <td><input value="1958730052" type="text" name="endTime"/></td>
+            </tr>
+            <tr>
+                <td>审核状态:</td>
+                <td><input value="1" type="text" name="status"/></td>
+            </tr>
+            <tr>
+                <td>添加人:</td>
+                <td><input value="weiyaheng" type="text" name="operator"/></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" /></td>
+            </tr>
+        </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>添加main_word</h1>
+        <form action="/?m=Add_Word" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input readonly="readonly" value="1000000000" type="text" id="word_comId" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>词:</td>
+                    <td><input type="text" onkeyup="selectLength(this.value)"  onblur="checkHas(this)" name="Word"/><span class="red hide"> 词已存在</span></td>
+                </tr>
+                <tr>
+                    <td>词语长度:</td>
+                    <td><input type="text" id="WordLength" name="WordLength"/></td>
+                </tr>
+                <tr>
+                    <td>类型:</td>
+                    <td>
+                        <select id="word_type" name="Type">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>词语原意:</td>
+                    <td><input  type="text" name="Prototype"/></td>
+                </tr>
+                <tr>
+                    <td>case<br>(酱油,醋,酒=买;水=接;)</td>
+                    <td><input  type="text" name="Case"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="main-add">
+        <h1>添加上下文触发</h1>
+        <form action="/?m=addContextTrigger" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" readonly="readonly" value="1000000000" id="context_word_comId" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>上下文类型:</td>
+                    <td>
+                        <select id="context_category_type" name="context_category_type">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>问题:</td>
+                    <td><input type="text" name="orignal"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>获取问题列表</h1>
+        <form action="/?m=GetQuestions" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>类型:</td>
+                    <td><input type="text" name="type"/></td>
+                </tr>
+                <tr>
+                    <td>分类id:</td>
+                    <td><input type="text" name="categoryId"/></td>
+                </tr>
+                <tr>
+                    <td>起始页数:</td>
+                    <td><input type="text" name="pageIndex"/></td>
+                </tr>
+                <tr>
+                    <td>每页调用数量:</td>
+                    <td><input type="text" name="pageSize"/></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="main-add">
+        <h1>删除问题</h1>
+        <form action="/?m=DelQuestion" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>类型:</td>
+                    <td><input type="text" name="type"/></td>
+                </tr>
+                <tr>
+                    <td>要删除的问题的id:</td>
+                    <td><input type="text" name="question_id"/></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="main-add">
+        <h1>搜索问题</h1>
+        <form action="/?m=search" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>表:</td>
+                    <td><input type="text" name="tableId"/></td>
+                </tr>
+                <tr>
+                    <td>分类ID:</td>
+                    <td><input type="text" name="categoryId"/></td>
+                </tr>
+                <tr>
+                    <td>搜索内容:</td>
+                    <td><input type="text" name="content"/></td>
+                </tr>
+                <tr>
+                    <td>搜索类型:</td>
+                    <td><input type="text" name="searchType"/></td>
+                </tr>
+                <tr>
+                    <td>调用第几页:</td>
+                    <td><input type="text" name="pageIndex"/></td>
+                </tr>
+                <tr>
+                    <td>每页调用多少条:</td>
+                    <td><input type="text" name="pageSize"/></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>批量添加问题</h1>
+        <form action="/?m=batchDialog" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>内容:</td>
+                    <td><input type="text" name="content"/></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>获取问题详情</h1>
+        <form action="/?m=getQuestionById" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>问题ID:</td>
+                    <td><input type="text" name="id"/></td>
+                </tr>
+                <tr>
+                    <td>类型:</td>
+                    <td><input type="text" name="type"/></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>修改问题</h1>
+        <form action="/?m=modifyDialog" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>问题ID:</td>
+                 <td><input type="text" name="id"/></td>
+                </tr>
+                <tr>
+                    <td>问题:</td>
+                    <td><input type="text" name="ask"/></td>
+                </tr>
+                <tr>
+                    <td>回答:</td>
+                    <td><input type="text" name="answer"/></td>
+                </tr>
+                <tr>
+                    <td>子问题:</td>
+                    <td><input type="text" name="ext_questions"/></td>
+                </tr>
+                <tr>
+                    <td>分类ID:</td>
+                    <td><input type="text" name="categoryId"/></td>
+                </tr>
+                <tr>
+                    <td>开始时间:</td>
+                    <td><input type="text" name="startTime"/></td>
+                </tr>
+                <tr>
+                    <td>结束时间:</td>
+                    <td><input type="text" name="endTime"/></td>
+                </tr>
+                <tr>
+                    <td>修改人:</td>
+                    <td><input type="text" name="operator"/></td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="main-add">
+        <h1>修改有效期</h1>
+        <form action="/?m=updateDate" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>分类ID:</td>
+                    <td><input type="text" name="categoryId"/></td>
+                </tr>
+                <tr>
+                    <td>类别:</td>
+                    <td><input type="text" name="type"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="main-add">
+        <h1>关联问题</h1>
+        <form action="/?m=relationQuestion" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>未知问题id:</td>
+                    <td><input type="text" name="unknownId"/></td>
+                </tr>
+                <tr>
+                    <td>已知问题id:</td>
+                    <td><input type="text" name="knownId"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>批量审核</h1>
+        <form action="/?m=batchAudit" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>问题id:</td>
+                    <td><input type="text" name="id"/></td>
+                </tr>
+                <tr>
+                    <td>审核状态不能传空 1、已审核 0、未审核:</td>
+                    <td><input type="text" name="status"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="main-add">
+        <h1>导出Excel</h1>
+        <form action="/?m=excelData" method="post">
+            <table>
+                <tr>
+                    <td>企业id:</td>
+                    <td><input type="text" name="comId"/></td>
+                </tr>
+                <tr>
+                    <td>分类ID:</td>
+                    <td><input type="text" name="categoryId"/></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>
+
