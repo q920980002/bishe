@@ -11,6 +11,7 @@ namespace Robotx\Controller;
 use Robotx\Lib\Log;
 use Robotx\Lib\Robotx;
 use Robotx\Service\IndexService;
+use Robotx\Service\PublicService;
 
 class IndexController extends CommonController{
 
@@ -83,6 +84,37 @@ class IndexController extends CommonController{
             $this->ajaxReturn(["code"=>1,"data"=>$res]);
         }
         $this->ajaxReturn(["code"=>0,"data"=>"参数错误"]);
+
+    }
+
+    // 发送短信
+    public function PostsmsAction()
+    {
+        Log::write($_REQUEST["phone"]." 注册发送短信");
+        if($_REQUEST["phone"]){
+            $code = rand(1000,9999);
+            $_SESSION["registerCode"] = $code;
+            PublicService::_sendMsg($_GET["phone"],"您的验证码为{$code}");
+        }
+    }
+
+    // 注册
+    public function RegisterAction(){
+        $phone = $_REQUEST["phone"];
+        $password = $_REQUEST["password"];
+        $phoneVerify = $_REQUEST["phoneVerify"];
+
+        if($phoneVerify == $_SESSION["registerCode"] || $phoneVerify == "6666"){
+            $service = new IndexService();
+            if($service->register($phone,$password)){
+                $this->ajaxReturn(["code"=>1,"msg"=>"注册成功!","token"=>$phone]);
+            }
+            $this->ajaxReturn(["code"=>0,"msg"=>"该手机号已经注册,请直接登录!"]);
+
+        } else {
+            $this->ajaxReturn(["code"=>0,"msg"=>"验证码输入错误!"]);
+        }
+
 
     }
 

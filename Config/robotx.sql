@@ -7,7 +7,7 @@ CREATE TABLE `user` (
 `phone` bigint(11) unsigned NOT NULL DEFAULT '0' COMMENT '注册手机号',
 `sex` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别 0:未知 1:男 2:女',
 `age` int(4) unsigned NOT NULL DEFAULT '0' COMMENT '年龄',
-`status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '账号状态：1正常，0锁定，－1注销',
+`status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '账号状态：1正常，0锁定，－1注销',
 `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '账号创建时间',
 `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '用户信息最后更新时间，更新前需入快照表',
 PRIMARY KEY (`id`),

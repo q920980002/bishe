@@ -28,6 +28,18 @@ class IndexService extends CommonDB{
         }
     }
 
+    public function register($phone,$password)
+    {
+        $time = time();
+        $sql = "insert into `user` (`id`,`username`,`password`,`phone`,`status`,`create_time`) VALUES (null,'{$phone}','{$password}','{$phone}','1','{$time}')";
+        try{
+            $res = $this->insert($sql);
+            return $res;
+        }catch(\Exception $e){
+            return false;
+        }
+
+    }
     public function login($param)
     {
         $sql = "select * from `user` where `phone` = '{$param['username']}' and `password` = '{$param['password']}'";
