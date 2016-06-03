@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+        (function() {
+            var App, site;
+
+            App = (function() {
+                function App() {}
+
+                App.prototype.distance = null;
+
+                App.prototype.goal = null;
+
+                App.prototype.init = function() {
+                    this.getElements();
+                    this.getDistance();
+                    return this.render();
+                };
+
+                App.prototype.getElements = function() {
+                    var element, elements, i, len, results;
+                    elements = ["current", "year", "percent", "rate"];
+                    results = [];
+                    for (i = 0, len = elements.length; i < len; i++) {
+                        element = elements[i];
+                        results.push(this[element] = document.getElementsByClassName(element)[0]);
+                    }
+                    return results;
+                };
+
+                App.prototype.getDistance = function() {
+                    var day, days, delta, distance, first, now;
+                    now = new Date();
+                    first = new Date(now.getFullYear(), 0, 0);
+                    delta = now - first;
+                    day = 1000 * 60 * 60 * 24;
+                    days = Math.floor(delta / day);
+                    this.goal = parseInt(now.getFullYear());
+                    distance = (days / 365) * this.goal;
+                    return this.distance = Math.round(distance * 10) / 10;
+                };
+
+                App.prototype.render = function() {
+                    var percent, rate;
+                    this.current.innerHTML = this.distance;
+                    this.year.innerHTML = this.goal;
+                    percent = Math.round((this.distance / this.goal) * 1000);
+                    percent = percent / 10;
+                    percent = percent + "%";
+                    this.percent.innerHTML = percent;
+                    rate = Math.round((this.goal / 365) * 100) / 100;
+                    return this.rate.innerHTML = rate;
+                };
+
+                return App;
+
+            })();
+
+            site = new App;
+
+            site.init();
+
+        }).call(this);
+
+    </script>
+    <style>
+
+        body {
+            background-color: #1d2528;
+            font-size: 0;
+            overflow: hidden;
+
+
+        }
+        .holder {
+            -ms-transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: #f8fdff;
+            text-align: center;
+            overflow: hidden;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+        }
+        .holder .current,
+        .holder ul,
+        .holder .head {
+            display: block;
+            position: relative;
+        }
+        .holder .head {
+            padding: 30px 30px 0 30px;
+        }
+        .holder .head label {
+            -ms-transform: translate(0, 75%);
+            -webkit-transform: translate(0, 75%);
+            transform: translate(0, 75%);
+        }
+        .holder ul {
+            padding: 15px 0 30px 0;
+        }
+        .holder li {
+            padding: 30px;
+            position: relative;
+            box-sizing: border-box;
+            display: inline-block;
+            width: 33.3333%;
+        }
+        .holder li:after {
+            content: "";
+            opacity: 0.1;
+            -ms-transform: translate(0, -50%);
+            -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            background-color: #1d2528;
+            position: absolute;
+            height: 40%;
+            width: 1px;
+            right: 0;
+            top: 50%;
+        }
+        .holder li:last-of-type:after {
+            display: none;
+        }
+        h1,
+        h2,
+        label {
+            font-family: "Roboto", sans-serif;
+            text-transform: uppercase;
+        }
+        h1,
+        h2 {
+            color: #fa4248;
+        }
+        h1 {
+            width: 300px;
+            letter-spacing: 0.04em;
+            font-weight: 900;
+            font-size: 85px;
+        }
+        h2 {
+            letter-spacing: 0.07em;
+            font-weight: 300;
+            font-size: 24px;
+        }
+        label {
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            text-align: center;
+            left: 0;
+            bottom: 0;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            display: block;
+            padding: 10px;
+            font-size: 10px;
+        }
+        .head-back{
+            height:44px;
+
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="head-back">
+    <div>
+        <a href="/web/user.html" class="back-btn"></a>
+        <p>计步器</p>
+    </div>
+</div>
+
+<div class="box1info">
+    <div class="holder">
+        <div class="head">
+            <h1 class="current">10</h1>
+            <label>已经走了</label>
+        </div>
+        <ul>
+            <li>
+                <h2 class="year">5000</h2>
+                <label>目标(步)</label>
+            </li>
+            <li>
+                <h2 class="percent">20%</h2>
+                <label>百分比</label>
+            </li>
+            <li>
+                <h2 class="rate">3km</h2>
+                <label>目标米数</label>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -21,7 +21,84 @@ body {
     font-weight: normal;
     color:#626262;
 }
+@font-face {
+    font-family: 'typicons';
+    font-weight: normal;
+    font-style: normal;
+    src: url('font/typicons.eot');
+    src: url('font/typicons.eot?#iefix') format('embedded-opentype'),
+    url('font/typicons.woff') format('woff'),
+    url('font/typicons.ttf') format('truetype'),
+    url('font/typicons.svg#typicons') format('svg');
+}
+.typcn:before {
+    font-family: 'typicons';
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+.typcn-heart-full-outline:before { content: '\e085'; } /* ' ÊµÐÄ ÐÄÐÎ«È' */
+.typcn-heart-outline:before { content: '\e087'; } /* ' ¿ÕÐÄ ÐÄÐÎ«Ê' */
+.typcn-heart-full-outline:before { content: '\e085'; } /* '心' */
+.typcn-thumbs-down:before { content: '\e11a'; } /* '手指往下' */
+.typcn-message:before { content: '\e0b8'; } /* 消息 */
+.typcn-trash:before { content: '\e123'; } /* 删除 */
+.typcn-spanner:before { content: '\e103'; } /* 板子 */
+.typcn-arrow-up-thick:before { content: '\e023'; } /* 向上 */
+.typcn-export-outline:before { content: '\e06c'; } /* 转发 */
+.typcn-plus:before { content: '\e0cf'; } /* 加 */
+.typcn-minus:before { content: '\e0bd'; } /* '¼õºÅ¬¢' */
+.typcn-mail:before { content: '\e0a5'; } /* ' ÐÅ·â«è' */
+.typcn-cog-outline:before { content: '\e04f'; } /* 螺母 */
+.typcn-arrow-sorted-down:before { content: '\e01d'; } /* 向下三角形 */
+.typcn-device-laptop:before { content: '\e05a'; } /* 电脑*/
+.typcn-phone-outline:before { content: '\e0c4'; } /* 电话 */
+.typcn-device-phone:before { content: '\e05b'; } /* 手机 */
+.typcn-time:before { content: '\e120'; } /* 闹钟 */
+.typcn-th-list-outline:before{ content: '\e113'; } /* 列表 */
+.typcn-credit-card:before { content: '\e053'; } /* 抵押 */
+.typcn-business-card:before{ content: '\e036'; } /* 信用担保 */
+.typcn-printer:before{ content: '\e0d4'; } /* 票据 */
+.typcn-info-outline:before { content: '\e092'; } /* 感叹号 */
+.typcn-calculator:before { content: '\e037'; } /* 计算器 */
+.typcn-group:before { content: '\e083'; } /* 多个人 */
+.typcn-user:before { content: '\e12c'; } /* 一个人*/
+.typcn-user-outline:before { content: '\e12b'; } /* 一个控人 */
+.typcn-media-record-outline:before { content: '\e0b1'; } /* 空心圆圈*/
+.typcn-media-record:before { content: '\e0b2'; } /* 实心圆圈 */
+.typcn-volume-up:before { content: '\e134'; } /* 喇叭 */
+.typcn-user-add:before { content: '\e128'; } /* 添加会员头 */
+.typcn-edit:before { content: '\e067'; } /* 填写资料 */
+.typcn-upload-outline:before { content: '\e125'; } /* 上传图标 */
+.typcn-tick:before { content: '\e11e'; } /* 对号 */
+.typcn-home:before { content: '\e08a'; } /* 房子 */
+.typcn-home-outline:before { content: '\e089'; } /* 房子 */
+.typcn-clipboard:before { content: '\e04a'; } /* 本子  交易记录*/
+.typcn-chart-bar:before { content: '\e041'; } /* 走势图 */
+.typcn-shopping-bag:before { content: '\e0df'; } /* 红包 */
+.typcn-lock-closed-outline:before { content: '\e0a1';} /* 锁子*/
+.typcn-lock-closed:before { content: '\e0a2'; } /* 锁子 */
+.typcn-lock-open-outline:before { content: '\e0a3'; } /* '锁子 */
+.typcn-lock-open:before { content: '\e0a4'; } /*锁子 */
 
+.typcn-credit-5:before{ content: '\e120'; } /* 闹钟 */
+.typcn-credit-4:before { content: '\e113'; } /* 列表 */
+.typcn-credit-1:before { content: '\e053'; } /* 抵押 */
+.typcn-credit-2:before { content: '\e036'; } /* 信用担保 */
+.typcn-credit-3:before { content: '\e0d4'; } /* 票据 */
+.typcn-shopping-cart:before { content: '\e0e0'; } /* 购物车 */
+.typcn-media-record:before { content: '\e0b2';} /* 圆圈 */
+.typcn-social-flickr:before { content: '\e0e7'; } /* 2个圆圈 */
+.typcn-zoom-outline:before { content: '\e14e'; } /* 放大镜 */
 table {
     border-collapse: collapse;
     border-spacing: 0;

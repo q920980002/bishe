@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+
+    </script>
+    <style>
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            min-height: 100%;
+        }
+        html {
+            -ms-text-size-adjust: 100%;
+            /* 1 */
+            -webkit-text-size-adjust: 100%;
+            /* 1 */
+        }
+        body {
+            margin: 0;
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+        audio,
+        canvas,
+        progress,
+        video {
+            display: inline-block;
+            /* 1 */
+            vertical-align: baseline;
+            /* 2 */
+        }
+        audio:not([controls]) {
+            display: none;
+            height: 0;
+        }
+        [hidden],
+        template,
+        script {
+            display: none;
+        }
+        a {
+            background: transparent;
+        }
+        a:focus {
+            outline: thin dotted;
+        }
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+        ins,
+        a {
+            text-decoration: none;
+        }
+        abbr[title] {
+            border-bottom: 1px dotted;
+        }
+        b,
+        strong {
+            font-weight: bold;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+        q {
+            quotes: "\201C" "\201D" "\2018" "\2019";
+        }
+        small {
+            font-size: 80%;
+        }
+        sub,
+        sup {
+            font-size: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sup {
+            top: -0.5em;
+        }
+        sub {
+            bottom: -0.25em;
+        }
+        img {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            /* 1 */
+            max-width: 100%;
+            /* 2 */
+            height: auto;
+            /* 2 */
+            vertical-align: middle;
+            /* 3 */
+            border: 0;
+            /* 4 */
+        }
+        svg:not(:root) {
+            overflow: hidden;
+        }
+        figure {
+            margin: 0;
+        }
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+            font-size: 1em;
+        }
+        fieldset {
+            border: 1px solid #c0c0c0;
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em;
+        }
+        legend {
+            border: 0;
+            /* 1 */
+            padding: 0;
+            /* 2 */
+        }
+
+        .text-indent {
+            text-indent:2em;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            color: inherit;
+            /* 1 */
+            font: inherit;
+            /* 2 */
+            margin: 0;
+            /* 3 */
+        }
+        button {
+            overflow: visible;
+        }
+        button,
+        input {
+            line-height: normal;
+        }
+        button,
+        select {
+            text-transform: none;
+        }
+        button,
+        html input[type="button"],
+        input[type="reset"],
+        input[type="submit"] {
+            -webkit-appearance: button;
+            /* 2 */
+            cursor: pointer;
+            /* 3 */
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            cursor: pointer;
+            /*1*/
+            padding: 0;
+            /*2*/
+            box-sizing: border-box;
+            /* 3 */
+        }
+        button[disabled],
+        html input[disabled] {
+            cursor: default;
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            height: auto;
+        }
+        input[type="search"] {
+            -webkit-appearance: textfield;
+            /* 1 */
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            /* 2 */
+        }
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+        textarea {
+            overflow: auto;
+            /* 1 */
+            vertical-align: top;
+            /* 2 */
+            resize: vertical;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        td,
+        th {
+            padding: 0;
+        }
+        html {
+            font-size: 62.5%;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        body {
+            position: relative;
+            background: #ffffff;
+            font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", sans-serif;
+            font-weight: normal;
+            line-height: 1.6;
+            color: #333333;
+            font-size: 1.4rem;
+        }
+        ul,ol,h1,h3,p,h6{margin:0;padding:0;}
+        /*----------begin demo----------*/
+        .clearfloat:after{display:block;clear:both;content:".";visibility:hidden;height:0;}
+        .page{padding:0 1em;}
+        .text-red{color:red;}
+        .text-gray{color:#666;}
+        .t-12{font-size:1.4rem;}
+        .itemList{border-bottom:1px solid #ccc;border-top:1px solid #ccc;}
+        .itemList .onSave{padding:0.5em 1em;color:#b2b2b2;}
+        .itemList .text-gray{margin-right:1em;}
+        .itemList ul{padding:0.5em 1em;}
+        .itemList li{padding:0.2em 0;}
+        .itemList li label{width:6em;text-align:right;display:inline-block;}
+        .itemList li input{border:1px solid #ccc;width:180px;padding:3px;}
+        .productIMG img{position:relative;left:50%;margin-left:-88px;}
+        .onSave .text-red{position:relative;left:50%;margin-left:-90px;}
+        .productService{padding:1em;list-style:none;}
+        .productService label{margin-right:1em;}
+        .productService li{line-height:35px;padding:4px 0;}
+        .box-list{width:85px;height:35px;line-height:30px;border:1px solid #ccc;display:inline-block;text-align:center;margin-right:8px;color:#666;}
+        .boxL-small{width:65px;}
+        .box-list-checked{border:1px solid #FC3F3E;background:url("http://img.hcoor.com/web/images/checked.jpg") right bottom no-repeat;}
+        .warp-text{border:1px solid #ccc;height:30px;display:inline-block;margin:0;font-size:1rem;}
+        .warp-text span{width:35px;height:28px;line-height:28px;background:#E6E6E6;text-align:center;display:inline-block;font-size:18px;cursor:pointer;font-weight:bold;}
+        .warp-text input{border:none;width:40px;height:22px;line-height:22px;text-align:center;color:#666;font-size:14px;}
+        .payTotal{text-align:center;}
+        ul{list-style:none;}
+        .bigPrice{font-size:20px;color:red;}
+        .payTotal .bigPrice{margin-left:8px;}
+        .payBtn{border-top:1px solid #ccc;background:#f5f5f5;padding:1.2em 0;border-bottom:1px solid #ccc;text-align:center;}
+        .payBtn button,.btn-short{background:#FC3F3E;border: 1px solid #ddd;color: #fff;box-shadow:none;height: 40px;text-shadow: none;padding:0 2em;-moz-border-radius:20px;-webkit-border-radius:20px;border-radius:20px;}
+        .btn-default{height: 40px;-moz-border-radius:20px;-webkit-border-radius:20px;border-radius:20px;border: 1px solid #ddd;box-shadow:none;width:100%;padding:0 2em;text-shadow: none;}
+        .myOrder{padding:1.5em 1em 0;}
+        .btn-red{background:#FC3F3E;color:#fff;border:none;}
+        .myOrder .btn-red{margin-top:0.5em;}
+        .orderInfo{padding:1em;border-bottom:1px solid #ccc;}
+        .orderInfo li{color:#666;}
+        .orderInfo li label{color:#333;}
+        .orderItem{border:1px solid #ccc;margin:1em 1em 0;}
+        .title-s1{margin:0;background:#efefef;text-align:center;line-height:30px;}
+        .orderStaus{padding:1em;}
+        .orderStaus li{height:22px;line-height:22px;background:url("http://img.hcoor.com/web/images/staus-no.jpg") left top no-repeat;padding-left:28px;}
+        .orderStaus li.y{background-image:url("http://img.hcoor.com/web/images/staus-yes.jpg")}
+        .orderStaus li.y:first-child{background:url("http://img.hcoor.com/web/images/staus-first.jpg") left 7px no-repeat;}
+        .orderStaus li span{float:right;color:#666;}
+        .orderItem .btn-short{margin:0 1em 1em;}
+        .dv-msgbox-mask{display:none;position:absolute;z-index:9999;top:0;left:0;width:100%;height:100%;background-color:#000;opacity:0.2;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";#filter:alpha(opacity=20);}
+        .agentContent{padding-top:1em;}
+        .icon-yuan{width:20px;height:20px;border:1px solid #FC3F3E;color:#FC3F3E;font-size:12px;display:inline-block;text-align:center;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;margin-right:4px;}
+        .agentContent p,.agentContent .btn-default{margin-top:0.5em;}
+        .agentContent p{padding:0;margin-bottom:0;}
+        .agentInfo{color:#666;margin-left:0.5em;}
+        .radioList label{height: 40px;line-height:35px;border: 1px solid #efefef;display:inline-block;background:#efefef;color:#999;padding:0 1em;cursor:pointer;}
+        .radioList label input{display:none;}
+        .radioList label.check{background:#ccc;color:#333;}
+        .radioList label:first-child,.cut-nav li:first-child,.cut-style2 li:first-child{-moz-border-radius-topleft:20px;-webkit-border-top-left-radius:20px;border-top-left-radius:20px;-moz-border-radius-bottomleft:20px;-webkit-border-bottom-left-radius:20px;border-bottom-left-radius:20px;}
+        .radioList label:last-child,.cut-nav li:last-child,.cut-style2 li:last-child{-moz-border-radius-topright:20px;-webkit-border-top-right-radius:20px;border-top-right-radius:20px;-moz-border-radius-bottomright:20px;-webkit-border-bottom-right-radius:20px;border-bottom-right-radius:20px;}
+        .index-nav{background:#404144;padding:0.5em 1em;text-align:center;}
+        .index-nav a{line-height:30px;color:#cccccc;border-right:1px solid #cccccc;padding:0 1em;width:32%;display:inline-block;font-size: 14px;}
+        .pageImgBlack{background:#0B0C11;text-align:center;}
+        .pageImgWhite{background:#fff;text-align:center;}
+        .pageImggray{background:#2e2e2e;text-align:center;padding:0.1em 0;}
+        .pageImggray p{color:#999;text-align:left;padding:0.5em 0;}
+        .pageImggray h3{color:#fff;font-size:20px;font-weight:normal;}
+        .imgTextList{padding: 1em 0;}
+        .imgTextList p{width:33%;float:left;border-right:0px dashed #999;padding:0 1em;margin: 0.2em 0;}
+        .imgTextList p:last-child{border-right:none;}
+        .imgTextList p strong{color:#23B660;font-size:14px;display:block;font-weight: normal;}
+        .imgTextList p span{font-size:12px;}
+        .pageImgWhite .pageImgWrap,.pageImggray .pageImgWrap{margin:0 auto;padding:0 1em;}
+        .pageImgWhite .index-yh{padding:1em;}
+        .index-yh p{text-align:left;padding:0 1em;font-size:13px;margin-top:4px;}
+        .index-yh p img{margin-right:4px;}
+        .pageImgBlack .pageImgbanner{margin:0 auto;padding:2em 0 2em;position:relative;}
+        .t-1{font-size:30px;color:#fff;position:absolute;top:65px;width:100%;text-algin:center;}
+        .t-2{color:#C2C9D2;position:absolute;top:130px;width:100%;text-algin:center;}
+        .bg-ef{background:#f0f0f0;}
+        .bg-ef h3,.bg-ef p{color:#666;}
+        .index-nav a:last-child{border:none;}
+        .index-price{padding:1em 1em;}
+        .index-price p{position:relative;margin:0;padding: 0 18px;}
+        .price-p span{position:absolute;left:100px;}
+        .price-p .text-red{top:20px;}
+        .index-price .price-p .bigPrice{font-size:28px;}
+        .middleText{text-decoration:line-through;}
+        .index-price .btn-default{margin-top:1em;}
+        .index-price .l{float:left;width:40%;height:100px;text-align:center;}
+        .index-price .l img{height:100px;}
+        .index-price .r{float:left;width:60%;height:100px;}
+        .cut-nav{padding:1em 1em 0;border-top:1px solid #ccc;background:#f0f0f0;}
+        .cut-nav-fixed{width: 100%; position: static; z-index: 999; top: 0px;left: 0px;right: 0px;}
+        .cut-nav li{float:left;width:33.33333%;background:#F2F2F5;height:40px;line-height:34px;text-align:center;border:1px solid #CECED8;border-right:none;}
+        .cut-nav li:last-child{border-right:1px solid #CECED8;}
+        .cut-nav li.current{background:#FC3F3E;color:#fff;border-color:#FC3F3E;}
+        .cut-style2{margin-top:12px;}
+        .cut-style2 li{float:left;width:50%;background:#00A0EA;color:#fff;height:40px;line-height:34px;text-align:center;}
+        .cut-style2 li:last-child{border-right:1px solid #CECED8;}
+        .cut-style2 li.current{background:#FC3F3E;color:#fff;border-color:#FC3F3E;}
+        .title-h1{height:40px;line-height:35px;color:#999;font-size:16px;text-align:center;background:#efefef;border-bottom:1px solid #ccc;}
+        .pageText{padding:1em;}
+        .title-h3{background:#fff url("http://img.hcoor.com/web/images/t-bg.jpg") left top no-repeat;height:31px;border-bottom:2px solid #FC3F3E;color:#fff;text-indent:1em;line-height:30px;}
+        .icon-money{width:28px;height:40px;display:inline-block;background:url("http://img.hcoor.com/web/images/icon-bag.jpg");position:absolute;left:50%;margin-left:-146px;}
+        .cut-dv{display:none;}
+        .cut-showDv{display:block;}
+        .block-confirm{width:282px;padding:51px 0 0;background:url("http://img.hcoor.com/web/images/msgBox-bg.png") left top no-repeat;position:absolute;left:50%;margin-left:-141px;z-index:10000;top:200px;}
+        .block-confirm .block-footer{-moz-border-radius-bottomleft:10px;-webkit-border-bottom-left-radius:10px;border-bottom-left-radius:10px;-moz-border-radius-bottomright:10px;-webkit-border-bottom-right-radius:10px;border-bottom-right-radius:10px;
+            background:#fff;height:10px;}
+        .block-confirm .block-heading{padding:0 1em 0.2em;color:#C91423;background:#fff;font-size:16px;text-align:center;}
+        .block-confirm .block-heading span{display:block;border-bottom:1px solid #ccc;}
+        .block-confirm .block-heading .fa-times{float:right;}
+        .fa-times{width:20px;height:20px;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;background:#3985FF;color:#fff;display:inline-block;font-weight:bold;line-height:17px;}
+        .block-confirm .block-body{background:#fff;padding:0.5em 1em;}
+        .block-confirm .btn-content{text-align:center;padding:1em 0 0;}
+        .btn-gray{background:#f6f6f6;color:#666;}
+        /*鍥剧墖杞挱*/
+        div.imgbox ul li{float:left;overflow:hidden;text-align:center;}
+        div.imgbox ul li img{}
+        @media screen and (min-width:240px) {
+
+        }
+        @media screen and (min-width:320px) {
+
+        }
+        @media screen and (min-width:480px) {
+
+        }
+        @media screen and (min-width:640px) {
+
+        }
+        @media screen and (min-width:960px) {
+
+        }
+        ol, ul {
+            list-style:none;
+        }
+        blockquote, q {
+            quotes:none;
+        }
+        blockquote:before, blockquote:after, q:before, q:after {
+            content:'';
+            content:none;
+        }
+        :focus {
+            outline:0;
+        }
+        ins {
+            text-decoration:none;
+        }
+        del {
+            text-decoration:line-through;
+        }
+        table {
+            border-collapse:collapse;
+            border-spacing:0;
+        }
+        /* Globe Font Control */
+        .top-nav {
+            float: right;
+            font-size: 0;
+            margin-top: 29px;
+            position: relative;
+            z-index: 1;
+        }
+        .top-nav a {
+            color: #000;
+            cursor:pointer;
+            display: inline-block;
+            font-size: 18px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
+            width: 111px;
+            padding-right:4px;
+        }
+        .top-nav a.current {
+            background:url(../images/top_nav_active.png) no-repeat;
+            color: #fff;
+        }
+        .pro-switch {
+            overflow: hidden;
+            position: relative;
+        }
+        .flexslider {
+            margin: 0;
+            padding: 0;
+        }
+        .flexslider .slides > li {
+            display: none;
+            -webkit-backface-visibility: hidden;
+        }
+        .flexslider .slides img {
+            width: 100%;
+            display: block;
+        }
+        .slides:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+            height: 0;
+        }
+        html[xmlns] .slides {
+            display: block;
+        }
+        * html .slides {
+        }
+        .no-js .slides > li:first-child {
+            display: block;
+        }
+        .flexslider {
+            margin: 0 auto;
+            position: relative;
+            zoom: 1;
+        }
+        .flex-viewport {
+            max-height: 2000px;
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            transition: all 1s ease;
+        }
+        .flexslider .slides {
+            zoom: 1;
+        }
+        .flex-direction-nav {
+            *height: 0;
+        }
+        .flex-direction-nav a {
+            width: 30px;
+            height: 45px;
+            margin-top: -20px;
+            display: block;
+            background: url(../images/ad_ctr.png);
+            background-size:cover;
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+            cursor: pointer;
+            text-indent: -9999px;
+            opacity: 0;
+            filter:alpha(opacity=0);
+            -webkit-transition: all .3s ease;
+        }
+        .flex-direction-nav .flex-next {
+            background-position: 0 -45px;
+            right: 0;
+        }
+        .flex-direction-nav .flex-prev {
+            left: 0;
+        }
+        .flexslider:hover .flex-next {
+            opacity: 0.8;
+            filter:alpha(opacity=25);
+        }
+        .flexslider:hover .flex-prev {
+            opacity: 0.8;
+            filter:alpha(opacity=25);
+        }
+        .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {
+            opacity: 1;
+            filter:alpha(opacity=50);
+        }
+        .flex-control-nav {
+            width: 100%;
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+        }
+        .flex-control-nav li {
+            margin: 0 5px;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+        }
+        .flex-control-paging li a {
+            background: url(../images/dot.png) no-repeat 0 -16px;
+            display:block;
+            height: 16px;
+            overflow: hidden;
+            text-indent:-99em;
+            width: 16px;
+            cursor: pointer;
+        }
+        .flex-control-paging li a.flex-active {
+            background-position: 0 0;
+        }
+        .mod-tit {
+            background: no-repeat;
+            color:#303236;
+            font-size: 28px;
+            height: 50px;
+            line-height: 50px;
+            margin:32px 0;
+            padding-left: 60px;
+        }
+        .tszl {
+            background-image: url(../images/tit_tslm.png);
+        }
+        .about {
+            background-image: url(../images/tit_about.png);
+        }
+        .pro-list {
+            font-size: 0;
+        }
+        .pro-list li {
+            background-color: #11b4fe;
+            border: 4px solid #d3d5db;
+            display: inline-block;
+            *float:left;
+            height: 120px;
+            margin-right: 38px;
+            width: 120px;
+        }
+        .pro-list li.last {
+            margin-right: 0;
+        }
+        .news-mod-cont {
+            background-color: #f7f7f7;
+            overflow: hidden;
+            padding: 30px;
+            _zoom: 1;
+        }
+        .news-mod {
+            width: 342px;
+        }
+        .news-mod-tit {
+            background: url(../images/line.png) no-repeat 0 100%;
+            color: #3e3f43;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+        }
+        .more, .fr {
+            float: right;
+        }
+        .more {
+            color: #168eff;
+            text-decoration: none;
+        }
+        .fl {
+            float: left;
+        }
+        .date {
+            color: #7b7b7b;
+            float: right;
+        }
+        .txt-list li, .news-list li {
+            color: #3e3f43;
+            display: block;
+            padding: 6px 0;
+        }
+        .news-list li a, .txt-list li a {
+            color: #2c6ba6;
+            text-decoration: none;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        .head-back{
+            height:44px;
+            background: #29a7e1;
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="head-back">
+    <div>
+        <a href="/web/user.html" class="back-btn"></a>
+        <p>购买设备</p>
+    </div>
+</div>
+
+
+<div class="pro-switch" style="margin: 0 auto;">
+    <div class="slider">
+        <div class="flexslider">
+
+            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                <ul class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(-375px, 0px, 0px);">
+                    <li class="clone" style="width: 375px; float: left; display: block;">
+                     <div class="img"><img src="/web/images/ad_0625.jpg" alt=""></div>
+                    </li>
+                    <li class="flex-active-slide" style="width: 375px; float: left; display: block;">
+                        <div class="img"><img src="/web/images/ad_3.jpg" alt=""></div>
+                    </li>
+
+               </ul>
+
+            </div>
+
+            <ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a>2</a></li><li><a>3</a></li></ol><ul class="flex-direction-nav"><li><a class="flex-prev" href="#">Previous</a></li><li><a class="flex-next" href="#">Next</a></li></ul></div>
+    </div>
+</div>
+
+<div class="pageImgWhite">
+    <div class="pageImgWrap index-yh">
+
+
+        <p><span class="icon-yuan">发</span>现货现卖，当天购买、次日发货。</p>
+
+        <p><span class="icon-yuan">赠</span>购买用户，均赠送优伴健康腰围尺。</p>
+
+        <p><span class="icon-yuan">包</span>全国免费包邮，7天无理由退货。</p>
+
+        <p><span class="icon-yuan">保</span>官方100%正品，保修期1年。</p>
+    </div>
+</div>
+
+<div class="index-price clearfloat">
+    <div class="l">
+        <img src="/web/images/prd_2.jpg" alt="ban1">
+    </div>
+    <div class="r">
+        <p class="price-p">
+            <strong class="bigPrice" style="font-size:18px;font-weight: normal;">￥</strong>
+            <strong class="bigPrice" style="font-weight: normal;">599</strong>
+            <span class="text-gray">零售价：599</span>
+            <span class="text-red">暂时缺货</span>
+        </p>
+        <p style="margin-top:-32px;padding-right: 30px;float: right;">
+            <span style="display:block;"></span>
+        </p>
+        <div id="div_ali_pay" class="time-item">
+            <div class="time-item" style="display:none;">
+                <ul class="cut-style2 clearfloat">
+                    <li class="current" onclick="javascript:localhref_red();">微信支付</li>
+                    <li onclick="javascript:locationHrefToAli();">支付宝支付</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="index-price clearfloat">
+    <div class="l">
+        <img src="/web/images/prd_1.jpg" alt="ban1">
+    </div>
+    <div class="r">
+        <p class="price-p">
+            <strong class="bigPrice" style="font-size:18px;font-weight: normal;">￥</strong>
+            <strong class="bigPrice" style="font-weight: normal;">599</strong>
+            <span class="text-gray">零售价：599</span>
+            <span class="text-red">现货发售</span>
+        </p>
+        <p style="margin-top:-32px;padding-right: 30px;float: right;">
+            <span style="display:block;"></span>
+        </p>
+        <div id="div_ali_pay" class="time-item">
+            <div class="time-item">
+                <ul class="cut-style2 clearfloat">
+                    <li class="current" onclick="javascript:locationHrefToBlack_Wx();">微信支付</li>
+                    <li onclick="javascript:localhrefToBlack_Ali();">支付宝支付</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<ul id="fixedDiv" class="cut-nav clearfloat cut-nav-fixed" style="padding-bottom: 0.8em; position: static;">
+    <li class="current">概述</li>
+    <li>产品</li>
+    <li>功能</li>
+</ul>
+<div id="introduce" name="introduce">
+
+
+
+
+
+    <div class="cut-dv cut-showDv">
+        <div class="pageImggray bg-ef">
+            <div class="pageImgWrap ">
+                <img src="/web/images/wx_intr_1.jpg" alt="好产品">
+            </div>
+        </div>
+        <div class="pageImggray bg-ef">
+            <div class="pageImgWrap">
+                <img src="/web/images/wx_intr_2.jpg" alt="好产品">
+            </div>
+        </div>
+        <div class="pageImggray bg-ef">
+            <div class="pageImgWrap ">
+                <img style="float: right;" src="/web/images/wx_intr_3.jpg" alt="好产品">
+
+            </div>
+        </div>
+        <div class="pageImggray bg-ef">
+            <div class="pageImgWrap clearfloat">
+                <img style="float: left; margin-right: 8px;" src="/web/images/wx_intr_4.jpg" alt="好产品">
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<br>
+
+
+
+</body>
+</html>
+

@@ -15,6 +15,16 @@ UNIQUE KEY `uk_user_name` (`username`),
 UNIQUE KEY `uk_user_phone` (`phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
+DROP table if exists `family`;
+CREATE TABLE `family` (
+`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+`u_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+`family_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '家人id',
+`appellation` varchar(64) NOT NULL DEFAULT '' COMMENT '称呼',
+`create_time` int(11) NOT NULL DEFAULT '0' COMMENT '账号创建时间',
+`update_time` int(11) NOT NULL DEFAULT '0' COMMENT '用户信息最后更新时间，更新前需入快照表',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家人中间表';
 
 DROP table if exists `body_fat_data`;
 CREATE TABLE `body_fat_data` (

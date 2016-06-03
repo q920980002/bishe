@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+
+    </script>
+    <style>
+        body{
+            background: #eee;
+        }
+        .box1{
+            background: #fff;
+            padding: 20px;
+        }
+        .box1 h1{
+            font-size: 16px;
+            font-weight: normal;
+            padding: 0 0 10px 0;
+        }
+        .box-01{
+            width: 50%;
+        }
+        .box-02{
+            width: 50%;
+            float: right;
+        }
+        .left{
+            float: left;
+        }
+
+        .box-02 ul li{
+            line-height: 30px;
+            margin-left: 20px;
+        }
+        .box-02 ul li span{
+            display: inline-block;
+            width: 10px;
+            height:10px;
+            margin-right: 10px;;
+        }
+
+        .box1-table1{
+            width: 100%;
+            margin-bottom: 30px;;
+        }
+        .box1-table1 td ,.box1-table1 th {
+            padding: 10px 0;
+            border-bottom: 1px dotted #ddd;
+            text-align: center;
+        }
+        .box1-table2 {
+            width: 100%;
+
+        }
+        .box1-table2 td{
+            padding:4px;
+            border:1px solid #ddd;
+        }
+        .box1-table2 tr:nth-child(2n){
+            background: #f5f6f7;
+        }
+
+        .head-back{
+            height:44px;
+            background: #29a7e1;
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+        .item{
+            padding:20px;
+            background: #fff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="head-back">
+    <div>
+        <a href="/web/user.html" class="back-btn"></a>
+        <p>动态</p>
+    </div>
+</div>
+
+<div class="box1info">
+    <div class="item">
+        我今天量了体重56KG
+    </div>
+    <div class="item">
+        我2016年06月02日09:27:46跑了200步
+    </div>
+    <div class="item">
+        爸爸在2016年06月02日09:27:35称了体重68kg
+    </div>
+    <div class="item">
+        哥哥今天吃了200千焦早餐
+    </div>
+</div>
+
+</body>
+</html>
+

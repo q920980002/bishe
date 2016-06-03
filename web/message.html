@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <style>
+        body{
+            background: #EBEBF1;
+            height: 100%;
+            width: 100%;
+        }
+        .main-box{
+            background: #eee;
+
+        }
+
+        .head-back{
+            height:44px;
+            background: #29a7e1;
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+        .message-item{
+            padding:10px 20px;
+            background: #fff;
+            border-bottom: 1px solid #ddd;;
+            clear: both;
+        }
+        .system-icon{
+            width: 50px;
+            height:50px;
+            background:  url("/web/images/voice.png") center no-repeat;
+            background-size: 80% 80%;
+            float: left;
+        }
+        .friend-icon{
+            width: 50px;
+            height:50px;
+            background:  url("/web/images/message.png") center no-repeat;
+            background-size: 80% 80%;
+            float: left;
+        }
+        .content{
+            float: left;
+            margin-left: 15px;
+        }
+        .content b{
+            font-size: 15px;
+
+        }
+        .content p{
+            font-size: 13px;
+            color:#999;
+            padding-top: 4px;;
+        }
+    </style>
+</head>
+<body>
+<div class="head-back">
+    <div>
+
+        <p>消息</p>
+    </div>
+</div>
+    <div class="main-box">
+        <div style="height: 20px"></div>
+        <div class="message-item">
+            <div class="system-icon"></div>
+            <div class="content">
+                <b>系统消息</b>
+                <p>亲爱的用户,欢迎您使用体重计APP</p>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="message-item">
+            <div class="friend-icon"></div>
+            <div class="content">
+                <b>妈妈</b>
+                <p>多吃点~看你这几天瘦的!</p>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="message-item">
+            <div class="friend-icon"></div>
+            <div class="content">
+                <b>哥哥</b>
+                <p>小胖子你好哦!</p>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+    </script>
+    <style>
+        body{
+            background: #eee;
+        }
+        .box1{
+            background: #fff;
+            padding: 20px;
+        }
+        .box1 h1{
+            font-size: 16px;
+            font-weight: normal;
+            padding: 0 0 10px 0;
+        }
+        .box-01{
+            width: 50%;
+        }
+        .box-02{
+            width: 50%;
+            float: right;
+        }
+        .left{
+            float: left;
+        }
+
+        .box-02 ul li{
+            line-height: 30px;
+            margin-left: 20px;
+        }
+        .box-02 ul li span{
+            display: inline-block;
+            width: 10px;
+            height:10px;
+            margin-right: 10px;;
+        }
+        .box1info {
+            background: #fff;
+            padding:15px;
+            font-size: 13px;px;
+        }
+        .box1-table1{
+            width: 100%;
+            margin-bottom: 30px;;
+        }
+        .box1-table1 td ,.box1-table1 th {
+            padding: 10px 0;
+            border-bottom: 1px dotted #ddd;
+            text-align: center;
+        }
+        .box1-table2 {
+            width: 100%;
+
+        }
+        .box1-table2 td{
+            padding:4px;
+            border:1px solid #ddd;
+        }
+        .box1-table2 tr:nth-child(2n){
+            background: #f5f6f7;
+        }
+
+        .head-back{
+            height:44px;
+            background: #29a7e1;
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+        .yinshi-box{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            height:100px;
+
+            background: #fff;
+        }
+        .yinshi-box > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+
+            border-right: 1px solid #ddd;
+        }
+        .yinshi-box > div > img {
+            width: 40%;
+            margin-top: 15px;
+        }
+        .yinshi-box > div > b {
+            display: block;
+            font-size: 13px;
+            font-weight: normal;
+        }
+        .add-food{
+            width: 100%;
+            height:80%;
+            position: absolute;
+            top:10%;
+            background: #fff;
+            overflow-y:auto;
+            display: none;
+        }
+        #addTitle{
+            text-align: center;
+            font-size: 15px;
+            padding:10px;
+            border-bottom: 1px solid #ddd;
+            position: relative;
+        }
+        .close{
+
+            color:#ff3311;
+            position: absolute;
+            right: 13px;
+            top:0px;
+            font-size:28px;
+        }
+        .all-select > div {
+             display: -webkit-box;
+             display: -webkit-flex;
+             display: -ms-flexbox;
+             display: flex;
+             -webkit-flex-direction: row;
+             -ms-flex-direction: row;
+             flex-direction: row;
+            height:100px;
+            border-bottom: 1px solid #ddd;
+         }
+        .all-select > div > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+
+            border-right: 1px solid #ddd;
+        }
+        .all-select > div > div > div {
+            width: 70px;
+            background-size:cover ;
+            background-position: center;
+            height: 70px;
+            margin: 5px auto;
+            border-radius: 100px;
+            border:1px solid #999;
+
+        }
+        #hasSelect > div{
+            width: 70px;
+            background-size:cover ;
+            background-position:center;
+            height: 70px;
+            margin: 10px;;
+            border-radius: 100px;
+            border:1px solid #999;
+            display: inline-block;
+
+         }
+        #hasSelect > b {
+           display: none;
+        }
+         .all-select > div > div > b {
+            display: block;
+        }
+        .has-select {
+            min-height: 100px;
+            border-bottom: 1px solid #ddd;;
+        }
+        .btn{
+            padding:12px 0;
+            width: 80%;
+            margin: 10px auto;
+            font-size:15px;
+            background: #29a7e1;
+            color:#fff;
+
+            display: block;
+        }
+        .btn-box{
+            padding-top:20px;
+            text-align: center;
+        }
+        .btn-box b{
+            color:#ff3311;
+            font-size:16px;
+            padding:0 6px;
+        }
+        i{
+            font-style: normal;
+        }
+
+    </style>
+    <script>
+        var foodType,qianjiao = 0;
+        function showYinshi(type) {
+            foodType = type;
+            if (type == "zao") {
+                $("#addTitle > b").text("早餐");
+            } else if (type == "wu") {
+                $("#addTitle > b").text("午餐");
+            } else if (type == "wan") {
+                $("#addTitle > b").text("晚餐");
+            }
+            $("#addFood").show();
+            $("#hasSelect").empty();
+            qianjiao = 0;
+        }
+
+        function finish() {
+            $("#addFood").hide();
+            $("#hasSelect").empty();
+            $("#hasSheru").text(parseInt($("#hasSheru").text()) + qianjiao);
+            qianjiao = 0;
+        }
+
+        $(function(){
+            $(".all-select ").find(".food-item").each(function(i,obj){
+                $(this).click(function(){
+                    //console.log(obj);
+                    $("#hasSelect").append($(this).html());
+                    switch (i) {
+                        case 0:
+                            qianjiao += 10;
+                            break;
+                        case 1:
+                            qianjiao += 30;
+                            break;
+                        case 2:
+                            qianjiao += 20;
+                            break;
+                        case 3:
+                            qianjiao += 50;
+                            break;
+                        case 4:
+                            qianjiao += 60;
+                            break;
+                        case 5:
+                            qianjiao += 5;
+                            break;
+
+                    }
+                    $("#nowHasqianjiao").text(qianjiao);
+
+                });
+                //$("#hasSelect").append();
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="head-back">
+    <div>
+        <a href="/web/user.html" class="back-btn"></a>
+        <p>饮食</p>
+    </div>
+</div>
+<div style="height:20px;"></div>
+<div class="box1info">
+   <div>
+       <label>建议摄入量:</label>
+       <b>1230大卡</b>
+   </div>
+</div>
+<div class="box1info">
+    <div>
+        <label>已摄入量:</label>
+        <b><i id="hasSheru">0</i>千焦</b>
+    </div>
+</div>
+<div style="height:20px;"></div>
+<h1 style="font-size:15px;color:#666;padding: 15px 10px;font-weight:normal;background: #fff;border-bottom: 1px solid #ddd">录入饮食</h1>
+<div class="yinshi-box">
+    <div onclick="showYinshi('zao')" class="yinshi-item">
+        <img src="/web/images/mianbao.png" />
+        <b>早餐</b>
+    </div>
+    <div  onclick="showYinshi('wu')" class="yinshi-item">
+        <img src="/web/images/miantiao.png" />
+        <b>午餐</b>
+    </div>
+    <div  onclick="showYinshi('wan')" class="yinshi-item">
+        <img src="/web/images/huoguo.png" />
+        <b>晚餐</b>
+    </div>
+</div>
+
+<div class="add-food" id="addFood">
+    <h1 id="addTitle"><b>早餐</b><span onclick="$(this).parent().parent().hide()" class="close">×</span></h1>
+    <div id="hasSelect" class="has-select"></div>
+
+    <h1 style="font-size:15px;font-weight: normal;padding:15px;border-bottom: 1px solid #ddd;clear:both">选择食品</h1>
+    <div class="all-select">
+        <div>
+            <div class="food-item">
+                <div style="background-image: url('/web/images/food/tang.jpg')" ></div>
+                <b>汤</b>
+            </div>
+            <div class="food-item">
+
+                <div  style="background-image: url('/web/images/food/miantiao.jpg')" ></div>
+                <b>面食</b>
+            </div>
+            <div class="food-item">
+
+                <div  style="background-image: url('/web/images/food/shucai.jpg')" ></div>
+                <b>蔬菜</b>
+            </div>
+        </div>
+        <div>
+            <div class="food-item">
+
+                <div  style="background-image: url('/web/images/food/lingshi.jpg')" ></div>
+                <b>零食</b>
+            </div>
+            <div class="food-item">
+
+                <div  style="background-image: url('/web/images/food/rou.jpg')" ></div>
+                <b>肉</b>
+            </div>
+            <div class="food-item">
+                <div  style="background-image: url('/web/images/food/shuiguo.jpg')" ></div>
+                <b>水果</b>
+            </div>
+        </div>
+    </div>
+    <div class="btn-box">
+        <p>已选:<b id="nowHasqianjiao">0</b>焦</p>
+        <span onclick="finish()" class="btn">已选好</span>
+    </div>
+</div>
+</body>
+</html>
+

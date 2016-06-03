@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+        $(function(){
+            $.ajax({
+                type: "post",
+                url: window.location.origin+"/?&m=get_weight",
+                data: {phone:phone},
+                dataType: "json",
+                success: function (data) {
+                    if(data.code == 1){
+                        data = data.data;
+                        var times = new Array();
+                        var datas = new Array();
+                        for(var i = 0;i<data.length;i++){
+                            times.push(formatDate(data[i]['create_time']*1000));
+                            datas.push(data[i]['weight'])
+                        }
+
+                        var data2 = {
+                            labels : times,
+                            datasets : [
+                                {
+                                    fillColor : "rgba(151,187,205,0.5)",
+                                    strokeColor : "rgba(151,187,205,1)",
+                                    pointColor : "rgba(151,187,205,1)",
+                                    pointStrokeColor : "#fff",
+                                    data : datas
+                                }
+                            ]
+                        }
+                        if(times.length < 1){
+                            $("#box1Weight").text("您还没有体重数据,请先上传数据吧!");
+                        }else{
+                            //Get the context of the canvas element we want to select
+                            var ctx2 = document.getElementById("myChart2").getContext("2d");
+                            var myNewChart = new Chart(ctx2).Line(data2,null);
+                        }
+                    }
+
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+        });
+    </script>
+    <style>
+        body{
+            background: #eee;
+        }
+        .box1{
+            background: #fff;
+            padding: 20px;
+        }
+        .box1 h1{
+            font-size: 16px;
+            font-weight: normal;
+            padding: 0 0 10px 0;
+        }
+        .box-01{
+            width: 50%;
+        }
+        .box-02{
+            width: 50%;
+            float: right;
+        }
+        .left{
+            float: left;
+        }
+
+        .box-02 ul li{
+            line-height: 30px;
+            margin-left: 20px;
+        }
+        .box-02 ul li span{
+            display: inline-block;
+            width: 10px;
+            height:10px;
+            margin-right: 10px;;
+        }
+        .box1info {
+            background: #fff;
+            padding:20px;
+        }
+        .box1-table1{
+            width: 100%;
+            margin-bottom: 30px;;
+        }
+        .box1-table1 td {
+            padding: 10px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .box1-table2 {
+            width: 100%;
+
+        }
+        .box1-table2 td{
+            padding:4px;
+            border:1px solid #ddd;
+        }
+        .box1-table2 tr:nth-child(2n){
+            background: #f5f6f7;
+        }
+
+        .head-back{
+            height:44px;
+            background: #29a7e1;
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="head-back">
+    <div>
+        <a href="/web/user.html" class="back-btn"></a>
+        <p>我的体重趋势表</p>
+    </div>
+</div>
+<div id="box1Weight" class="box1">
+    <canvas id="myChart2"  ></canvas>
+</div>
+<div class="clear" style="height: 20px"></div>
+<div class="box1info">
+    <table class="box1-table1">
+        <tr>
+            <td>年龄:</td>
+            <td>23</td>
+            <td>性别:</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>身高:</td>
+            <td>178cm</td>
+            <td>最新BMI:</td>
+            <td>23.3</td>
+        </tr>
+        <tr>
+            <td>历史最低:</td>
+            <td>60kg</td>
+            <td>历史最高:</td>
+            <td>89kg</td>
+        </tr>
+    </table>
+    <h1 style="font-size:15px;font-weight: normal;border-left:2px solid #29a7e1;padding-left:10px;margin:10px 0;">BMI参考表</h1>
+    <table class="box1-table2">
+        <tr>
+            <td>小于18.5</td>
+            <td>消瘦</td>
+        </tr>
+        <tr>
+            <td>18.5 ~ 24.9之间</td>
+            <td>正常</td>
+        </tr>
+        <tr>
+            <td>大于25:</td>
+            <td>超重</td>
+        </tr>
+        <tr>
+            <td>25 ~ 29.9</td>
+            <td>偏胖</td>
+        </tr>
+        <tr>
+            <td>30~34.9</td>
+            <td>肥胖</td>
+        </tr>
+        <tr>
+            <td>35~39.9</td>
+            <td>重度肥胖</td>
+        </tr>
+        <tr>
+            <td>大于40</td>
+            <td>极重度肥胖</td>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>
+

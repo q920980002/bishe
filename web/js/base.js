@@ -10,3 +10,7 @@ function   formatDate(timestamp)   {
     return  month+"-"+date+" "+hour+"时";
 }
 
+function toHref(url) {
+   // window.location.href=url;
+    alert(22);
+}
