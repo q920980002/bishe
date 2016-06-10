@@ -7,6 +7,7 @@ CREATE TABLE `user` (
 `phone` bigint(11) unsigned NOT NULL DEFAULT '0' COMMENT '注册手机号',
 `sex` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别 0:未知 1:男 2:女',
 `age` int(4) unsigned NOT NULL DEFAULT '0' COMMENT '年龄',
+`height` float(10,2) unsigned NOT NULL DEFAULT '0' COMMENT '身高',
 `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '账号状态：1正常，0锁定，－1注销',
 `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '账号创建时间',
 `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '用户信息最后更新时间，更新前需入快照表',
@@ -19,8 +20,13 @@ DROP table if exists `family`;
 CREATE TABLE `family` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 `u_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+`username` varchar(100) NOT NULL DEFAULT '' COMMENT '用户名',
 `family_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '家人id',
+`phone` bigint(11) unsigned NOT NULL DEFAULT '0' COMMENT '注册手机号',
 `appellation` varchar(64) NOT NULL DEFAULT '' COMMENT '称呼',
+`sex` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别 0:未知 1:男 2:女',
+`age` int(4) unsigned NOT NULL DEFAULT '0' COMMENT '年龄',
+`height` float(10,2) unsigned NOT NULL DEFAULT '0' COMMENT '身高',
 `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '账号创建时间',
 `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '用户信息最后更新时间，更新前需入快照表',
 PRIMARY KEY (`id`)
@@ -45,8 +51,6 @@ CREATE TABLE `body_fat_data` (
 `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '数据信息最后更新时间，更新前需入快照表',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='人体脂肪秤';
-
-
 
 DROP table if exists `body_general_data`;
 CREATE TABLE `body_general_data` (

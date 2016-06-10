@@ -104,6 +104,37 @@
             background-size: 24px 24px;
         }
     </style>
+    <script>
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+        $(function() {
+            $.ajax({
+                type: "post",
+                url: window.location.origin + "/?&m=get_family",
+                data: {phone: phone},
+                dataType: "json",
+                success: function (data) {
+                    data = data.data;
+                    var innerHtml = '';
+                    for(var i = 0; i<data.length; i++){
+                        innerHtml += '<tr>';
+                        innerHtml += '<td>'+data[i].appellation+':</td>';
+                        innerHtml += '<td>'+data[i].age+'</td>';
+                        innerHtml += '<td>'+data[i].sex+'</td>';
+                        innerHtml += '<td>83kg</td>';
+                        innerHtml += '<td>23.3</td>';
+                        innerHtml += '<td>2016年05月31日</td>';
+                        innerHtml += '</tr>';
+                    }
+                    $("#familyTable").append(innerHtml);
+                }
+            });
+        })
+    </script>
 </head>
 <body>
 <div class="head-back">
@@ -114,7 +145,8 @@
 </div>
 
 <div class="box1info">
-    <table class="box1-table1">
+    <a style="float: right;font-size:13px;font-weight: bold;" href="/web/add-family.html" >添加家人</a>
+    <table id="familyTable" class="box1-table1">
         <tr>
             <th>称呼</th>
             <th>年龄</th>
@@ -123,38 +155,7 @@
             <th>BMI</th>
             <th>最后时间</th>
         </tr>
-        <tr>
-            <td>父亲:</td>
-            <td>53</td>
-            <td>男</td>
-            <td>65kg</td>
-            <td>26.3</td>
-            <td>2016年05月31日</td>
-        </tr>
-        <tr>
-            <td>母亲:</td>
-            <td>52</td>
-            <td>女</td>
-            <td>66kg</td>
-            <td>21.3</td>
-            <td>2016年05月31日</td>
-        </tr>
-        <tr>
-            <td>哥哥:</td>
-            <td>25</td>
-            <td>男</td>
-            <td>75kg</td>
-            <td>23.3</td>
-            <td>2016年05月31日</td>
-        </tr>
-        <tr>
-            <td>嫂子:</td>
-            <td>24</td>
-            <td>女</td>
-            <td>47kg</td>
-            <td>22.3</td>
-            <td>2016年05月31日</td>
-        </tr>
+
     </table>
 
 </div>

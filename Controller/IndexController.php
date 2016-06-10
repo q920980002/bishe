@@ -18,29 +18,6 @@ class IndexController extends CommonController{
     public function IndexAction()
     {
         $service = new IndexService();
-
-
-//        $nickname = "魏亚恒";
-//        $username = "q920980002";
-//        $password = "w6855961";
-//        $phone = "15600065570";
-//        $status   = 1;
-//        $create_time = time();
-//
-//        $service->beginTrans();
-//        $sql = sprintf("insert into `user` (`id`,`nickname`,`username`,`password`,`phone`,`status`,`create_time`,`update_time`) VALUES  (null,'%s','%s','%s','%s','%s','%s','')",11,11,11,11,11,11);
-//        $service->insert($sql);
-//        $sql = sprintf("insert into `user` (`id`,`nickname`,`username`,`password`,`phone`,`status`,`create_time`,`update_time`) VALUES  (null,'%s','%s','%s','%s','%s','%s','')",$nickname,$username,$password,$phone,$status,$create_time);
-//        $service->insert($sql);
-//        $service->commit();
-//        try{
-//            $service->insert($sql);
-//        }catch(\Exception $e){
-//            p($e->getMessage());
-//        }
-
-
-
         echo "hello world!";
     }
 
@@ -87,6 +64,20 @@ class IndexController extends CommonController{
 
     }
 
+    /**
+     * 获取用户信息
+     */
+    public function Get_user_infoAction(){
+
+        if($_POST["phone"]){
+            $service = new IndexService();
+            $res = $service->getUserInfo($_POST);
+            $this->ajaxReturn(["code"=>1,"data"=>$res]);
+        }
+        $this->ajaxReturn(["code"=>0,"data"=>"参数错误"]);
+
+    }
+
     // 发送短信
     public function PostsmsAction()
     {
@@ -118,6 +109,29 @@ class IndexController extends CommonController{
 
     }
 
+    public function Change_infoAction() {
+        if($_POST){
+            $service = new IndexService();
+            $res = $service->changeUserInfo($_POST);
+            $this->ajaxReturn(["code"=>1,"data"=>$res]);
+        }
+        $this->ajaxReturn(["code"=>0,"data"=>"参数错误"]);
+    }
+
+    public function add_familyAction() {
+        if($_POST){
+            $service = new IndexService();
+            $res = $service->addFamily($_POST);
+            $this->ajaxReturn(["code"=>1,"data"=>$res]);
+        }
+        $this->ajaxReturn(["code"=>0,"data"=>"参数错误"]);
+    }
+
+    public function get_familyAction() {
+        $service = new IndexService();
+        $res = $service->getFamilyInfo($_POST);
+        $this->ajaxReturn(["code"=>1,"data"=>$res]);
+    }
 
 
 

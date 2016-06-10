@@ -38,7 +38,7 @@
                         data = data.data;
                         var times = new Array();
                         var datas = new Array();
-                        for(var i = 0;i<data.length;i++){
+                        for(var i = data.length - 1; i >= 0; i--){
                             times.push(formatDate(data[i]['create_time']*1000));
                             datas.push(data[i]['weight'])
                         }
@@ -69,7 +69,37 @@
                     console.log(e.responseText);
                 }
             });
+
+
+            $.ajax({
+                type: "post",
+                url: window.location.origin + "/?&m=get_user_info",
+                data: {phone: phone},
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    $("#td_age").text(data.data.age+"岁");
+                    $("#td_sex").text(data.data.sex == 2?"女":"男");
+                    $("#td_height").text(data.data.height+"cm");
+                    $("#td_bmi").text(bmi(data.data.new,data.data.height));
+                    $("#td_weight_low").text(data.data.min+"kg");
+                    $("#td_weight_height").text(data.data.max+"kg");
+
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+
         });
+
+        function bmi(weight, height){
+            if (height == 0) {
+                return 0;
+            }
+            height = height / 100;
+            return Math.round(weight / (height * height));
+        }
     </script>
     <style>
         body{
@@ -165,24 +195,25 @@
 </div>
 <div class="clear" style="height: 20px"></div>
 <div class="box1info">
+    <a style="float: right" href="/web/change-info.html">信息修改</a>
     <table class="box1-table1">
         <tr>
             <td>年龄:</td>
-            <td>23</td>
+            <td id="td_age">23</td>
             <td>性别:</td>
-            <td>男</td>
+            <td id="td_sex">男</td>
         </tr>
         <tr>
             <td>身高:</td>
-            <td>178cm</td>
+            <td id="td_height">178cm</td>
             <td>最新BMI:</td>
-            <td>23.3</td>
+            <td id="td_bmi">23.3</td>
         </tr>
         <tr>
             <td>历史最低:</td>
-            <td>60kg</td>
+            <td id="td_weight_low">60kg</td>
             <td>历史最高:</td>
-            <td>89kg</td>
+            <td id="td_weight_height">89kg</td>
         </tr>
     </table>
     <h1 style="font-size:15px;font-weight: normal;border-left:2px solid #29a7e1;padding-left:10px;margin:10px 0;">BMI参考表</h1>

@@ -149,6 +149,32 @@
             background-position: center;
         }
     </style>
+    <script>
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+        $(function(){
+            $("#phone").text(phone);
+
+            $.ajax({
+                type: "post",
+                url: window.location.origin + "/?&m=get_user_info",
+                data: {phone: phone},
+                dataType: "json",
+                success: function (data) {
+                    $("#age").text(data.data.age);
+                    $("#bodyheight").text(data.data.height);
+                    console.log(data);
+                },
+                error: function (e) {
+                    console.log(e.responseText);
+                }
+            });
+        })
+
+    </script>
 
 </head>
 <body>
@@ -159,11 +185,11 @@
             </div>
             <div class="head-right">
                 <div>
-                    <span>15600065570</span>
+                    <span id="phone"></span>
                 </div>
                 <div>
-                    <span>年龄:12 身高178cm</span>
-                    <a href="#">修改</a>
+                    <span>年龄:<b id="age"></b> 身高<b id="bodyheight"></b>cm</span>
+                    <a href="/web/change-info.html">修改</a>
                 </div>
             </div>
         </div>

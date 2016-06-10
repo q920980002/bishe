@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <!-- UC默认竖屏 ，UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <!-- QQ强制竖屏 QQ强制全屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <link href="/web/css/public.css" rel="stylesheet">
+    <script type="text/javascript" src="/web/js/base.js"></script>
+    <script type="text/javascript" src="/web/js/fastclick.js"></script>
+    <script type="text/javascript" src="/web/js/jquery.min.js"></script>
+    <script src="/web/js/Chart/Chart.js"></script>
+    <script>
+
+        if(window.AndroidData){
+            var phone = window.AndroidData.getPhone();
+        }else{
+            var phone = "15600065570";
+        }
+
+
+    </script>
+    <style>
+        body{
+            background: #EBEBF1;
+            height: 100%;
+            width: 100%;
+        }
+        .main-box{
+            background: #eee;
+
+        }
+        .item{
+            background: #fff;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .head-item{
+            height:120px;
+            background: url("/web/images/user_top.jpg");
+            background-size:cover;
+            padding-bottom: 8px;
+        }
+        .head-left{
+            width: 100%;
+            padding-top:10px;
+            text-align: center;
+
+
+        }
+        .head-left img{
+
+        }
+        .head-right{
+
+
+        }
+        .head-right > div{
+            height:20px;
+            font-size: 13px;
+            text-align: center;
+            color:#fff;
+        }
+        .head-right a{
+            color:#ff5511;
+        }
+
+        .item-box .item{
+            height:50px;
+        }
+        .item-box .item .icon{
+            display: block;
+            width: 50px;
+            height: 50px;
+
+            float: left;
+        }
+        .item-box .item label{
+            display: inline-block;
+            height: 50px;
+            margin-left: 10px;
+            line-height: 50px;
+            font-size: 14px;
+        }
+        .item-box .item .gt{
+            float:right;
+            margin-right: 30px;
+            display: block;
+            line-height: 50px;
+            font-size: 20px;
+            color:#c2c2c2;
+        }
+        .item-box .item{
+            border-bottom: none;
+        }
+        .bottom-border{
+            border-bottom: 1px solid #ddd!important;
+        }
+
+        .head-bottom {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            height:50px;
+            line-height: 50px;
+        }
+        .head-bottom > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            text-align: center;
+        }
+        .head-bottom > div:first-child{
+            border-right: 1px solid #ddd;
+        }
+        .icon-yinshi{
+
+            background-image: url("/web/images/xintiao.png");
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .icon-yundong{
+            background-image: url("/web/images/shuimian.png");
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .head-back{
+            height:44px;
+            background: #29a7e1;
+            color:#fff;
+            position: relative;
+            text-align: center;
+            line-height: 44px;;
+        }
+        .head-back p{
+            font-size: 17px;;
+        }
+        .back-btn{
+            font-size:30px;
+            position: absolute;
+            left:0px;
+            top:0px;
+            width:44px;
+            color:#fff;
+            height:44px;
+            background: url("/web/images/arrow.png") center no-repeat;
+            background-size: 24px 24px;
+        }
+        .box1-table2 {
+            width: 100%;
+
+        }
+        .box1-table2 td{
+            padding:8px;
+            border-bottom:1px dashed #ddd;
+            background: #fff;
+
+        }
+        .box1info{
+            padding:10px;
+        }
+        .box1info input{
+            border:1px solid #ddd;
+            padding:5px;
+            outline: none;
+            border-radius: 4px;
+            width: 60px;
+        }
+        .btn{
+            padding:3px 12px;
+            background: #29a731;
+            color:#fff;
+        }
+
+    </style>
+    <script>
+        $(function(){
+            $("#username").val(phone);
+            $("#formAddHandlingFee").submit(function(){
+
+                $.ajax({
+                    type: "post",
+                    url: window.location.origin + "/?&m=add_family",
+                    data: $("#formAddHandlingFee").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 1) {
+                            alert("添加成功!");
+                            window.location.href = "/web/family.html";
+                        } else {
+                            alert("添加失败!");
+                        }
+                    },
+                    error : function(){
+                        alert("添加失败!");
+                    }
+                });
+
+                return false;
+            });
+
+
+        })
+    </script>
+</head>
+<body>
+<div class="head-back">
+    <div>
+        <a href="/web/user.html" class="back-btn"></a>
+        <p>添加家人</p>
+    </div>
+</div>
+<div style="height: 30px"></div>
+<div class="box1info">
+
+    <form id="formAddHandlingFee" >
+        <input type="hidden" value="" id="username" name="username">
+        <table class="box1-table2">
+            <tr>
+                <td>称呼</td>
+                <td>
+                    <input type="text" name="appellation" />
+                </td>
+            </tr>
+            <tr>
+                <td>年龄</td>
+                <td><input type="tel" name="age" /> 周岁</td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td>
+                    <select name="sex">
+                        <option value="1">男</option>
+                        <option value="2">女</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>身高</td>
+                <td><input type="tel" name="height" /> cm</td>
+            </tr>
+            <tr>
+                <td>对方手机号</td>
+                <td><input type="tel" style="width: 120px" name="phone" /> </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="btn" type="submit" value="添加"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
+

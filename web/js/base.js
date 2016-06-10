@@ -1,5 +1,5 @@
 
-function   formatDate(timestamp)   {
+function formatDate(timestamp)   {
     var   now = new  Date(timestamp);
     var   year=now.getYear();
     var   month=now.getMonth()+1;

@@ -43,7 +43,6 @@
         }else{
             var phone = "15600065570";
         }
-
         $(function(){
 
             var ctx1 = document.getElementById("myChart1").getContext("2d");
@@ -59,11 +58,10 @@
                         data = data.data;
                         var times = new Array();
                         var datas = new Array();
-                        for(var i = 0;i<data.length;i++){
+                        for(var i = data.length - 1; i >= 0; i--){
                             times.push(formatDate(data[i]['create_time']*1000));
                             datas.push(data[i]['weight'])
                         }
-
                         var data2 = {
                             labels : times,
                             datasets : [
@@ -86,9 +84,6 @@
 
                     }
 
-                },
-                error: function (e) {
-                    console.log(e.responseText);
                 }
             });
         });

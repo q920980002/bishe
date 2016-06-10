@@ -84,5 +84,38 @@ class IndexService extends CommonDB{
 
     }
 
+    public function getUserInfo($param) {
+        $sql = "select * from `user` where `phone` = '{$param['phone']}'";
+        $res = $this->select($sql);
+        $res = $res[0];
+        $sql = "select max(weight) from `body_general_data` where `username` = '{$param['phone']}'";
+        $max = $this->count($sql);
+        $sql = "select min(weight) from `body_general_data` where `username` = '{$param['phone']}'";
+        $min = $this->count($sql);
+        $sql = "select weight from `body_general_data` where `username` = '{$param['phone']} order by id desc'";
+        $new = $this->count($sql);
+        $res['max'] = $max;
+        $res['min'] = $min;
+        $res['new'] = $min;
+        return $res;
+    }
+
+    public function changeUserInfo($param) {
+
+        $sql = "update `user` set `sex` = {$param['sex']},`age` = {$param['age']},`height` = {$param['height']} where `phone` = {$param['phone']} ";
+
+        return $this->sql($sql);
+    }
+
+    public function addFamily($param) {
+
+        $sql = "INSERT INTO `family` (`id`, `u_id`,`family_id`,`phone`,  `username`, `appellation`, `sex`, `age`, `height`) VALUES (NULL, '0', '0', '{$param['phone']}', '{$param['username']}','{$param['appellation']}', '{$param['sex']}', '{$param['age']}', '{$param['height']}')";
+        return $this->insert($sql);
+    }
+
+    public function getFamilyInfo($param) {
+        $sql = "select * from `family` where `username` = '{$param['phone']}'";
+        return $this->select($sql);
+    }
 
 }
